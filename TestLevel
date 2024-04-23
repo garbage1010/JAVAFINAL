@@ -1,1 +1,5 @@
+import java.awt.Graphics; // allows us to use graphics 
 
+Graphics g = new Graphics(); 
+
+g.drawString("Hello", 10, 10); //write hello, place at (10,10) 
