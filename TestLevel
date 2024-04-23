@@ -1,5 +1,9 @@
-import java.awt.Graphics; // allows us to use graphics 
+public class TestLevel { 
+  public static void main (String [] args) { 
+    import java.awt.Graphics; // allows us to use graphics 
 
-Graphics g = new Graphics(); 
+    Graphics g = new Graphics(); 
 
-g.drawString("Hello", 10, 10); //write hello, place at (10,10) 
+    g.drawString("Hello", 10, 10); //write hello, place at (10,10) 
+  }
+}
