@@ -3,7 +3,8 @@
  * @date 4/24/24
  */
 import java.awt.*; //graphics
-import java.util.*; //Random functionality
+import java.awt.event.*;
+import java.util.Random; //Random functionality
 import javax.swing.*; //Jpanel, JFrame, Timer
 
 class Surface extends JPanel implements ActionListener{
@@ -13,7 +14,7 @@ class Surface extends JPanel implements ActionListener{
   public Surface(){
     initTimer();
   }
-  private initTimer(){
+  private void initTimer(){
   // A javax.swing.Timer is used to create animation. It fires ActionEvents at the specified interval (DELAY).
     timer = new Timer(DELAY, this);
     timer.start();
@@ -33,10 +34,10 @@ class Surface extends JPanel implements ActionListener{
 
     Random r = new Random();
 
-    for(int i = 0; i < 2000; i++){
+    for(int i = 0; i < 50000; i++){
       int x = Math.abs(r.nextInt()) % w;
       int y = Math.abs(r.nextInt()) % h;
-      g2d.drawLine(x, y, x, y)
+      g2d.drawLine(x, y, x, y);
     } 
   }
   @Override
@@ -52,5 +53,38 @@ class Surface extends JPanel implements ActionListener{
 }
 
 public class PointDrawing extends JFrame{
+   
+   public PointDrawing() {
+   
+      initUI();
+   }
+   
+   private void initUI(){
+     final Surface surface = new Surface();
+     add(surface);
 
+     addWindowListener(new WindowAdapter() {
+         @Override
+         public void windowClosing(WindowEvent e) {
+             Timer timer = surface.getTimer();
+             timer.stop();
+         }
+     });
+     setTitle("Points");
+     setSize(350, 250);
+     setLocationRelativeTo(null);
+     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+   }
+   
+   public static void main(String[]args){
+   
+      EventQueue.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+   
+          PointDrawing ex = new PointDrawing();
+          ex.setVisible(true);
+      }
+     });
+   }
 }
