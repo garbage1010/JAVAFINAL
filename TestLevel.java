@@ -1,5 +1,7 @@
 /*
  * This is a test of surface creation and drawing graphics onto the surfaces
+ * @version 1.0
+ * @date 4/23/24
  */
 import java.awt.*; // allows us to use graphics 
 import javax.swing.JFrame;
