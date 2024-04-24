@@ -13,6 +13,11 @@ class Surface extends JPanel implements ActionListener{
   public Surface(){
     initTimer();
   }
+  private initTimer(){
+  // A javax.swing.Timer is used to create animation. It fires ActionEvents at the specified interval (DELAY).
+    timer = new Timer(DELAY, this);
+    timer.start();
+  }
 
   public Timer getTimer(){
     return timer;
@@ -24,11 +29,28 @@ class Surface extends JPanel implements ActionListener{
     g2d.setPaint(Color.blue);
 
     int w = getWidth();
-    
+    int h = getHeight();
+
+    Random r = new Random();
+
+    for(int i = 0; i < 2000; i++){
+      int x = Math.abs(r.nextInt()) % w;
+      int y = Math.abs(r.nextInt()) % h;
+      g2d.drawLine(x, y, x, y)
+    } 
   }
-  private initTimer(){
-    // A javax.swing.Timer is used to create animation. It fires ActionEvents at the specified interval (DELAY).
-      timer = new Timer(DELAY, this);
-      timer.start();
+  @Override
+  public void paintComponent(Graphics g) {
+  
+      super.paintComponent(g);
+      doDrawing(g);
   }
+  @Override
+  public void actionPerformed(ActionEvent e) {
+      repaint();
+  }
+}
+
+public class PointDrawing extends JFrame{
+
 }
