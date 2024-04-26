@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 public class Level1 extends JFrame{
     Level1(){
         //background image
-        ImageIcon questionmarkbackground = new ImageIcon("Frame1-1small.png");
+        ImageIcon questionmarkbackground = new ImageIcon("images/Frame1-1small.png");
         JLabel bgimg = new JLabel();
         bgimg.setIcon(questionmarkbackground);
         bgimg.setVerticalAlignment(JLabel.CENTER);
