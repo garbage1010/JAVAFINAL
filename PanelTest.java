@@ -8,18 +8,19 @@ public class PanelTest
    public static void main(String[]args)
    {
       JPanel redPanel = new JPanel();
-      redPanel.setBounds(0, 0, 250, 250);
+      redPanel.setBounds(0, 250, 250, 250);
       redPanel.setBackground(Color.RED);
       
       JLabel label = new JLabel();
-      label.setText("TEXT!!!");
-      label.setFont(new Font("Gadugi", Font.PLAIN, 20));
+      label.setText("HEY!");
+      label.setHorizontalAlignment(JLabel.CENTER);
+      label.setFont(new Font("Algerian", Font.BOLD, 200));
       
       JFrame frame = new JFrame();
       frame.setSize(600, 600);
       frame.setVisible(true);
-      //frame.add(redPanel);
-      frame.add(label);
+      frame.add(redPanel);
+      redPanel.add(label);
       
 
    }
