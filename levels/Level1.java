@@ -1,3 +1,4 @@
+
 /*
  * "This creates the class for the first level of the game"
  */
@@ -9,7 +10,7 @@ import javax.swing.ImageIcon;
 public class Level1 extends JFrame{
     Level1(){
         //background image
-        ImageIcon questionmarkbackground = new ImageIcon("images/Frame1-1.PNG");
+        ImageIcon questionmarkbackground = new ImageIcon("images/Frame1-1small.PNG");
         JLabel bgimg = new JLabel();
         bgimg.setIcon(questionmarkbackground);
         bgimg.setVerticalAlignment(JLabel.CENTER);
@@ -21,7 +22,7 @@ public class Level1 extends JFrame{
         //scene1.setLayout(null);
         scene1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         scene1.setResizable(false);
-        scene1.setSize(400, 300);
+        scene1.setSize(800, 600);
         scene1.setVisible(true);
         scene1.add(bgimg);
         /* 
