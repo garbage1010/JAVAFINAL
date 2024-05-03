@@ -34,7 +34,7 @@ public class Level1 extends JFrame{
         //frame
         JFrame scene1 = new JFrame();
         scene1.setTitle("Pre-Calc Panic: Integration by Parts");
-        scene1.setLayout(new OverlayLayout(overlay));
+        scene1.setLayout(new OverlayLayout(scene1));
         scene1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         scene1.setResizable(false);
         scene1.setSize(800, 600);
