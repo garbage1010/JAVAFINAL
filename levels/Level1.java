@@ -13,7 +13,7 @@ import javax.swing.OverlayLayout;
 public class Level1 extends JFrame{
     Level1(){
         //background image
-        ImageIcon questionmarkbackground = new ImageIcon("images/Frame1-1small.PNG");
+        ImageIcon questionmarkbackground = new ImageIcon("/images/Frame1-1.PNG");
         JLabel bgimg = new JLabel();
         bgimg.setIcon(questionmarkbackground);
         bgimg.setVerticalAlignment(JLabel.CENTER);
@@ -34,12 +34,12 @@ public class Level1 extends JFrame{
         //frame
         JFrame scene1 = new JFrame();
         scene1.setTitle("Pre-Calc Panic: Integration by Parts");
-        scene1.setLayout(new OverlayLayout(scene1));
+        //scene1.setLayout(new OverlayLayout());
         scene1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         scene1.setResizable(false);
         scene1.setSize(800, 600);
         scene1.setVisible(true);
-        scene1.add(redPanel);
+        //scene1.add(redPanel);
         scene1.add(bgimg);
        
     }
