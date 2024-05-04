@@ -5,29 +5,25 @@
 package levels;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
+
 import java.awt.*;
-import javax.swing.OverlayLayout;
+
+import javax.swing.ImageIcon;
 
 public class Level1 extends JFrame{
     Level1(){
         //background image
-        ImageIcon questionmarkbackground = new ImageIcon("images/Frame1-1.PNG");
+        ImageIcon questionmarkbackground = new ImageIcon("textbox.png");
+
+        //background made using jlabel
         JLabel bgimg = new JLabel();
         bgimg.setIcon(questionmarkbackground);
-        bgimg.setVerticalAlignment(JLabel.CENTER);
-        bgimg.setHorizontalAlignment(JLabel.CENTER);
 
-                
-        //frame
         JFrame scene1 = new JFrame();
-        scene1.setTitle("Pre-Calc Panic: Integration by Parts");
         scene1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        scene1.setResizable(false);
         scene1.setSize(800, 600);
         scene1.setVisible(true);
         scene1.add(bgimg);
-       
+
     }
 }
