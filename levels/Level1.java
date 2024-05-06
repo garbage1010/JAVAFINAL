@@ -10,19 +10,21 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import javafx.event.ActionEvent;
+
 
 // Class definition
 public class Level1 extends JFrame implements ActionListener{
 
     // Creating a button
-    JButton textbox = new JButton();
-
+    JButton textbox;
+    
     // Constructor
     Level1(){
 
+        textbox = new JButton();
         // Setting button dimensions
-        textbox.setBounds(0, 500, 200, 100);
+        textbox.setBounds(0, 500, 20, 10);
+        textbox.addActionListener(e -> System.out.println("click"));
         
         // Background image
         ImageIcon questionmarkbackground = new ImageIcon("textbox.png");
@@ -36,13 +38,13 @@ public class Level1 extends JFrame implements ActionListener{
         scene1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         scene1.setSize(800, 600);
         scene1.setVisible(true);
+        scene1.setResizable(false);
         scene1.add(bgimg);
+        scene1.repaint();
+        //scene1.add(textbox);
     }
 
     // This method is triggered when a button is pressed
-    public void actionPerformed(ActionEvent e) {
-        // Checks if the button pressed is the textbox button
-        if(e.getSource()==textbox){
-            // Action to be performed when the button is pressed
-        }
-    }
+
+
+}
