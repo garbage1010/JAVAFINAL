@@ -19,7 +19,7 @@ public class Level1 extends JFrame implements ActionListener{
     JButton textbox;
     
     // Constructor
-    Level1(){
+    public Level1(){
 
         textbox = new JButton();
         // Setting button dimensions
