@@ -1,0 +1,9 @@
+Hey, Mr. Landa! I need help on my Calculus homework… 
+Okay. Let me see.
+Thanks!
+No shame in asking for help.
+Mr. Landa! Mr. Landa!
+What?
+My program keeps saying “SyntaxError: missing curly bracket”. Can you fix it?
+THIS is why I tell you to comment them. THIS.
+Sorry… All you need to do is type in the number of the line where the bracket is missing.
