@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 // Class definition
@@ -45,6 +46,10 @@ public class Level1 extends JFrame implements ActionListener{
     }
 
     // This method is triggered when a button is pressed
+    @Override
+    public void actionPerformed(ActionEvent e) { 
+    
+    }
 
 
 }
