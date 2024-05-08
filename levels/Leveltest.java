@@ -5,6 +5,6 @@ public class Leveltest
    {
       //create Instance of Level1
       //@SuppressWarnings("unused")
-      level1 lvl1 =  new Level1();
+      StartMenu lvl1 =  new StartMenu();
    }
 }
