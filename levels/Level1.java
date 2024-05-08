@@ -28,11 +28,14 @@ public class Level1 extends JFrame implements ActionListener{
         textbox.addActionListener(e -> System.out.println("click"));
         
         // Background image
-        ImageIcon questionmarkbackground = new ImageIcon("textbox.png");
+        ImageIcon questionmarkbackground = new ImageIcon("Frame1-1.png");
+        ImageIcon textboxthingy = new ImageIcon("textbox.png"); 
 
         // Creating a JLabel for background image
         JLabel bgimg = new JLabel();
+        JLabel textbox = new JLabel(); 
         bgimg.setIcon(questionmarkbackground);
+        textbox.setIcon(textboxthingy); 
 
         // Creating and setting up the main frame
         JFrame scene1 = new JFrame();
@@ -41,6 +44,7 @@ public class Level1 extends JFrame implements ActionListener{
         scene1.setVisible(true);
         scene1.setResizable(false);
         scene1.add(bgimg);
+        scene1.add(textbox); 
         scene1.repaint();
         //scene1.add(textbox);
     }
