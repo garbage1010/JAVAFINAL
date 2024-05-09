@@ -73,7 +73,8 @@ public class TextFileReader extends JFrame implements KeyListener {
 
     public static void main(String[] args) {
         // Provide the file path as a command-line argument or manually, delete when put in level class 
-        String filePath = "input.txt";
+        String filePath = "C:/users/sabri/OneDrive/Documents/blackholesun.txt";
         new TextFileReader(filePath);
     }
 }
+
