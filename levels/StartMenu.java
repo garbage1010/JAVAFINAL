@@ -1,35 +1,43 @@
 package levels;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class StartMenu extends JFrame implements ActionListener{
     
-    JButton start;
-    JButton load;
+    JButton start; // Button for starting the game
+    JButton load; // Button for loading the game
 
     public StartMenu(){
         
         //Start Game Button
-        start = new JButton();
-        start.setBounds(5, 10, 10, 10);
-        start.addActionListener(e -> System.out.println("START GAME!!"));
+        start = new JButton(); // Initializing start button
+        start.setBounds(150, 250, 500, 50); // Setting position and size
+        start.setText("Start Game"); // Setting text
+        start.setFocusable(false); // Making it non-focusable
+        start.addActionListener(e -> System.out.println("START GAME!!")); // Adding action listener to print a message when clicked
 
         //Load Game Button
-        load = new JButton();
-        load.setBounds(10, 20, 10, 10);
-        load.addActionListener(e -> System.out.println("LOAD GAME!!!"));
+        load = new JButton(); // Initializing load button
+        load.setBounds(150, 325, 500, 50); // Setting position and size
+        load.setText("Load Game"); // Setting text
+        load.setFocusable(false); // Making it non-focusable
+        load.addActionListener(e -> System.out.println("LOAD GAME!!!")); // Adding action listener to print a message when clicked
 
 
         //Create Frame
-        JFrame menu = new JFrame();
-        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        menu.setSize(800, 600);
-        menu.setVisible(true);
-        menu.setResizable(false);
-        menu.add(start);
-        menu.add(load);
+        JFrame menu = new JFrame(); // Initializing frame
+        menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Setting default close operation
+        menu.setLayout(null); // Setting layout to null
+        menu.setSize(800, 600); // Setting size
+        menu.setVisible(true); // Making it visible
+        menu.setResizable(false); // Making it non-resizable
+        menu.setTitle("Game Name!! I forgot what it was called!!"); // Setting title
+        menu.getContentPane().setBackground(new Color(220, 220, 255)); // Setting background color
+        menu.add(start); // Adding start button to the frame
+        menu.add(load); // Adding load button to the frame
 
 
     }
