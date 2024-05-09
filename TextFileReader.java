@@ -12,12 +12,12 @@ public class TextFileReader extends JFrame implements KeyListener {
 
     public TextFileReader(String filePath) {
         this.filePath = filePath; // Store the file path
-        setTitle("Text File Reader");
+        setTitle("Text File Reader"); //remove all frame stuff when actually building the level AHEM rory
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         label = new JLabel();
-        label.setFont(new Font("Arial", Font.PLAIN, 25));
+        label.setFont(new Font("Agency FB", Font.PLAIN, 25));
         label.setForeground(Color.WHITE);
         add(label);
 
