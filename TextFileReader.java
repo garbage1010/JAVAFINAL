@@ -9,16 +9,20 @@ public class TextFileReader extends JFrame implements KeyListener {
     private ArrayList<String> lines; // ArrayList to store lines from the text file
     private int currentIndex; // Index to keep track of current line
     private String filePath; // File path to read
+    
+    // Make text box button
+    private JButton text = new JButton();
 
     public TextFileReader(String filePath) {
         this.filePath = filePath; // Store the file path
-        setTitle("Text File Reader"); //remove all frame stuff when actually building the level AHEM rory
+        setTitle("Text File Reader"); //remove all frame stuff when actually building the level
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        label = new JLabel();
-        label.setFont(new Font("Agency FB", Font.PLAIN, 25));
-        label.setForeground(Color.WHITE);
+        // Button characteristics 
+        text.setBounds(0,600,800,200); 
+        text.setFont(new Font("Agency FB", Font.PLAIN, 25));
+        text.setForeground(Color.WHITE);
         add(label);
 
         lines = new ArrayList<>(); // Initialize ArrayList to store lines
@@ -54,9 +58,9 @@ public class TextFileReader extends JFrame implements KeyListener {
     // Method to update the label with the current line
     private void updateLabel() {
         if (currentIndex < lines.size()) {
-            label.setText(lines.get(currentIndex)); // Set text of the label to current line
+            text.setText(lines.get(currentIndex)); // Set text of the label to current line
         } else {
-            label.setText("End of file"); // Display message when end of file is reached
+            text.setText("End of file"); // Display message when end of file is reached
         }
     }
 
@@ -77,4 +81,3 @@ public class TextFileReader extends JFrame implements KeyListener {
         new TextFileReader(filePath);
     }
 }
-
