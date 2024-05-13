@@ -33,7 +33,7 @@ public class Level2 extends JFrame implements ActionListener{
         bg.setIcon(new ImageIcon(frame1));
 
         //create button for text box
-        text.setText("PlaceHolder");
+        text.setText("PlaceHolder"); //This will be filled with text
         text.setFocusable(false);
         text.setBounds(0,600,800,200);
 
