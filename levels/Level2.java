@@ -42,9 +42,10 @@ public class Level2 extends JFrame implements ActionListener{
             scene.repaint();
             System.out.println("click");
             ++framecounter; //change frame count
+            System.out.println(framecounter);
             }
         });
-        //cipher.setOpaque(false);
+        cipher.setOpaque(false);
 
 
         //create scene
@@ -59,16 +60,5 @@ public class Level2 extends JFrame implements ActionListener{
     }
     @Override
     public void actionPerformed(ActionEvent e) { 
-        if(e.getSource()==cipher){
-            //what happens on first button press
-            System.out.println("click");
-            if(framecounter==1){
-                bg.setIcon(new ImageIcon(frame2)); //change background image
-                scene.remove(cipher);
-                scene.repaint();
-                System.out.println("click");
-                ++framecounter; //change frame count
-            }
-        }
     }
  }
