@@ -1,10 +1,10 @@
 /*
- * Level 2
+ * Level 2 - 5635290595
  */
 package levels;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.JButton; 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
@@ -35,10 +35,18 @@ public class Level2 extends JFrame implements ActionListener{
         cipher = new JButton();
         cipher.setFocusable(false);
         cipher.setBounds(425, 375, 100, 100);
+        cipher.addActionListener(e -> {            
+        if(framecounter==1){
+            bg.setIcon(new ImageIcon(frame2)); //change background image
+            scene.remove(cipher);
+            scene.repaint();
+            System.out.println("click");
+            ++framecounter; //change frame count
+            }
+        });
         //cipher.setOpaque(false);
 
 
-        
         //create scene
         scene.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         scene.setSize(800, 800);
