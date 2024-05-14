@@ -12,7 +12,18 @@ public class PreCalcPanic {
 
     int progressionID = 0; 
     boolean gameOver = false; 
-    
+
+    //call title screen code here 
+
+    //call level 1 here 
+
+    //call level 2 here 
+
+    //call level 3 here 
+
+    //add code to save progress here
+
+    //initiate game over if gameOver is true 
     
   }
 }
