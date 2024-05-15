@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 public class PreCalcPanic {
   public static void main(String[] args) {
 
-    int progressionID = 0; 
+    int currentIndex = 0; 
     boolean gameOver = false; 
 
     //call title screen code here 
