@@ -2,9 +2,7 @@ import java.io.*;
 
 // This class represents the game save data
 class GameSaveData implements Serializable {
-    private int playerLevel;
-    private int playerScore;
-    // Add more fields as needed
+    private int currLevel;
     
     // Constructor
     public GameSaveData(int level, int score) {
@@ -13,23 +11,13 @@ class GameSaveData implements Serializable {
     }
     
     // Getter and setter methods
-    public int getPlayerLevel() {
-        return playerLevel;
+    public int getCurrLevel() {
+        return currLevel;
     }
 
-    public void setPlayerLevel(int playerLevel) {
-        this.playerLevel = playerLevel;
+    public void setCurrLevel(int currLevel) {
+        this.currLevel = currLevel;
     }
-
-    public int getPlayerScore() {
-        return playerScore;
-    }
-
-    public void setPlayerScore(int playerScore) {
-        this.playerScore = playerScore;
-    }
-    // Add more getter and setter methods as needed
-}
 
 // This class handles saving and loading the game data
 class GameSaveManager {
