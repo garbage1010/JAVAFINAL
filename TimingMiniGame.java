@@ -29,7 +29,7 @@ public class TimingMiniGame extends Frame implements KeyListener {
                 moveCircle();
                 repaint();
                 try {
-                    Thread.sleep(10); // Adjust the speed of the moving circle
+                    Thread.sleep(20); // Adjust the speed of the moving circle
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
