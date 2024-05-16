@@ -43,6 +43,7 @@ public class Level2 extends JFrame implements ActionListener{
             System.out.println("click");
             ++framecounter; //change frame count
             System.out.println(framecounter);
+            scene.add(TextFileReader.text)
             }
         });
         cipher.setOpaque(false);
