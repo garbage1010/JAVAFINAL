@@ -11,9 +11,9 @@ import java.awt.event.ActionEvent;
 
 public class Level3 extends JFrame implements ActionListener {
 	
-	int framecounter = 1; 
+    int framecounter = 1; 
 	
-	Image frame1 = Toolkit.getDefaultToolkit().getImage("placeholder"); 
+    Image frame1 = Toolkit.getDefaultToolkit().getImage("placeholder"); 
     Image frame2 = Toolkit.getDefaultToolkit().getImage("placeholder");
     Image frame3 = Toolkit.getDefaultToolkit().getImage("placeholder"); 
     Image frame4 = Toolkit.getDefaultToolkit().getImage("placeholder"); 
