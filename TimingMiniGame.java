@@ -1,93 +1,84 @@
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class TimingMiniGame extends Frame implements KeyListener {
-    private int targetX = 300; // X-coordinate of the target circle, can be changed
-    private int targetY = 300; // Y-coordinate of the target circle, can be changed 
-    private int targetRadius = 50; // Radius of the target circle
-    private int movingX = 100; // Initial X-coordinate of the moving circle, can be changed
-    private int movingY = 100; // Initial Y-coordinate of the moving circle, can be changed
-    private int movingRadius = 50; // Radius of the moving circle
-    private int step = 1; // Step by which the moving circle moves towards the target
-    private boolean gameOver = false; // Flag to indicate game over
-    private boolean match = false; // Flag to indicate whether the moving circle matches the target
+public class TimingGame extends JFrame implements ActionListener {
 
-    public TimingMiniGame() {
-        setSize(600, 600);
-        setTitle("Timing Mini Game");
-        addKeyListener(this);
-        setVisible(true);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent we) {
-                dispose();
+    private JButton button; // Button that the player interacts with
+    private Timer timer; // Timer to change the button's state
+    private boolean isGreen = false; // Flag to track if the button is green
+
+    public TimingGame() {
+        // Set up the frame
+        setTitle("Timing Game");
+        setSize(300, 200);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        // Create the button
+        button = new JButton("Wait...");
+        button.setFont(new Font("Arial", Font.BOLD, 20));
+        button.setBackground(Color.RED);
+        button.setOpaque(true);
+        button.setBorderPainted(false);
+        button.addActionListener(this);
+
+        // Add button to the frame
+        add(button, BorderLayout.CENTER);
+
+        // Set up the timer to change the button color
+        timer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Randomly change button color and text
+                if (Math.random() < 0.5) {
+                    button.setBackground(Color.GREEN);
+                    button.setText("Press Now!");
+                    isGreen = true;
+                } else {
+                    button.setBackground(Color.RED);
+                    button.setText("Wait...");
+                    isGreen = false;
+                }
             }
         });
 
-        // Start the game loop
-        new Thread(() -> {
-            while (!gameOver) {
-                moveCircle();
-                repaint();
-                try {
-                    Thread.sleep(20); // Adjust the speed of the moving circle
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        // Start the timer
+        timer.start();
+
+        // Make the frame visible
+        setVisible(true);
     }
 
-    public void paint(Graphics g) {
-        if (!match) {
-            // Draw target circle
-            g.setColor(Color.BLUE);
-            g.fillOval(targetX - targetRadius, targetY - targetRadius, 2 * targetRadius, 2 * targetRadius);
-
-            // Draw moving circle
-            g.setColor(Color.RED);
-            g.fillOval(movingX - movingRadius, movingY - movingRadius, 2 * movingRadius, 2 * movingRadius);
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // Check if the button is green when pressed
+        if (isGreen) {
+            JOptionPane.showMessageDialog(this, "You win!");
         } else {
-            g.drawString("Congratulations! You matched the circles!", 200, 300);
+            JOptionPane.showMessageDialog(this, "Game Over! You pressed too soon.");
         }
+        // Restart the game
+        resetGame();
     }
 
-    public void moveCircle() {
-        if (!match) {
-            // Move the moving circle towards the target
-            if (movingX < targetX)
-                movingX += step;
-            else if (movingX > targetX)
-                movingX -= step;
-
-            if (movingY < targetY)
-                movingY += step;
-            else if (movingY > targetY)
-                movingY -= step;
-
-            // Check if moving circle matches target circle
-            if (Math.abs(movingX - targetX) <= 5 && Math.abs(movingY - targetY) <= 5) {
-                match = true;
-            }
-        }
+    private void resetGame() {
+        // Reset button to red and update text
+        isGreen = false;
+        button.setBackground(Color.RED);
+        button.setText("Wait...");
     }
 
-    public void keyPressed(KeyEvent e) {
-        // Check if space bar is pressed and moving circle matches target circle
-        if (e.getKeyCode() == KeyEvent.VK_SPACE && match) {
-            gameOver = true;
-            // Placeholder event 
-            System.out.println("Congratulations! You matched the circles!");
-        }
-    }
-
-    public void keyReleased(KeyEvent e) {
-    }
-
-    public void keyTyped(KeyEvent e) {
-    }
-
+    // Example usage 
     public static void main(String[] args) {
-        // Example usage, call in level 3
-        new TimingMiniGame();
+        // Ensure the GUI is created on the Event Dispatch Thread
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new TimingGame();
+            }
+        });
     }
 }
+
