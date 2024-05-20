@@ -11,7 +11,7 @@ public class TextFileReader extends JFrame implements KeyListener {
     private String filePath; // File path to read
     
     // Make text box button
-    private JButton text = new JButton();
+    public JButton text = new JButton();
 
     public TextFileReader(String filePath, int x, int y, int dx, int dy) {
         this.filePath = filePath; // Store the file path
@@ -72,9 +72,4 @@ public class TextFileReader extends JFrame implements KeyListener {
 
     public void keyReleased(KeyEvent e) {}
 
-    public static void main(String[] args) {
-        // Provide the file path as a command-line argument or manually, delete when put in level class 
-        String filePath = "C:/users/sabri/OneDrive/Documents/blackholesun.txt";
-        new TextFileReader(filePath);
-    }
 }
