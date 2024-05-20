@@ -44,7 +44,7 @@ public class Level1 extends JFrame implements ActionListener{
         scene1.setVisible(true);
         scene1.setResizable(false);
         scene1.add(bgimg);
-        
+        scene1.add(TextFileReader.text);
         //scene1.add(textbox);
     }
 
