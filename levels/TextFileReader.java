@@ -13,14 +13,11 @@ public class TextFileReader extends JFrame implements KeyListener {
     // Make text box button
     private JButton text = new JButton();
 
-    public TextFileReader(String filePath) {
+    public TextFileReader(String filePath, int x, int y, int dx, int dy) {
         this.filePath = filePath; // Store the file path
-        setTitle("Text File Reader"); //remove all frame stuff when actually building the level
-        setSize(400, 300);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         // Button characteristics 
-        text.setBounds(0,600,800,200); 
+        text.setBounds(x,y,dx,dy); 
         text.setFont(new Font("Agency FB", Font.PLAIN, 25));
         text.setForeground(Color.WHITE);
         add(label);
