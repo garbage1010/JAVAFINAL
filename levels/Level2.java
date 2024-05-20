@@ -18,7 +18,7 @@ public class Level2 extends JFrame implements ActionListener{
     
     //background image 
     //I have no idea how to access the subfolder images so forgive me but I have to leave it this way for now. I'll change it when I figure it out
-    Image frame1 = Toolkit.getDefaultToolkit().getImage("C:/Users/rory5/OneDrive/Documents/GitHub/JAVAFINAL/levels/images/Frame4-1.PNG"); 
+    Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\Frame4-1.PNG"); 
     Image frame2 = Toolkit.getDefaultToolkit().getImage("C:/Users/rory5/OneDrive/Documents/GitHub/JAVAFINAL/levels/images/Frame4-2.PNG");
 
     JLabel bg = new JLabel(); //Label to be used as background
@@ -43,7 +43,7 @@ public class Level2 extends JFrame implements ActionListener{
             System.out.println("click");
             ++framecounter; //change frame count
             System.out.println(framecounter);
-            scene.add(TextFileReader.text)
+            //scene.add(TextFileReader.text)
             }
         });
         cipher.setOpaque(false);

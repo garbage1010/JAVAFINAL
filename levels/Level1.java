@@ -23,7 +23,7 @@ public class Level1 extends JFrame implements ActionListener{
     public Level1(){
 
          // Background image
-        ImageIcon questionmarkbackground = new ImageIcon("Frame1-1.png");
+        ImageIcon questionmarkbackground = new ImageIcon("levels\\images\\Frame1-1.PNG");
         ImageIcon textboxthingy = new ImageIcon("textbox.png"); 
 
         textbox = new JButton();
@@ -36,14 +36,15 @@ public class Level1 extends JFrame implements ActionListener{
         JLabel bgimg = new JLabel();
         bgimg.setIcon(questionmarkbackground);
 
+
         // Creating and setting up the main frame
         JFrame scene1 = new JFrame();
         scene1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        scene1.setSize(800, 600);
+        scene1.setSize(800, 800);
         scene1.setVisible(true);
         scene1.setResizable(false);
         scene1.add(bgimg);
-        scene1.repaint();
+        
         //scene1.add(textbox);
     }
 
@@ -52,6 +53,4 @@ public class Level1 extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) { 
     
     }
-
-
 }
