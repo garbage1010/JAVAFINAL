@@ -53,25 +53,3 @@ class GameSaveManager {
         return data;
     }
 }
-
-public class Main {
-    public static void main(String[] args) {
-        // Example usage
-        
-        // Create some game data
-        GameSaveData saveData = new GameSaveData(10, 5000);
-        
-        // Save the game data
-        GameSaveManager.saveGame(saveData);
-        
-        // Load the game data
-        GameSaveData loadedData = GameSaveManager.loadGame();
-        
-        // Display loaded game data
-        if (loadedData != null) {
-            System.out.println("Player level: " + loadedData.getPlayerLevel());
-            System.out.println("Player score: " + loadedData.getPlayerScore());
-            // Display more loaded data as needed
-        }
-    }
-}
