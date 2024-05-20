@@ -57,7 +57,6 @@ public class Level3 extends JFrame implements ActionListener {
 		} 
 	
 	 public void actionPerformed(ActionEvent e) { 
-		 framecounter++; 
     }
 	
 }
