@@ -4,8 +4,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.*;
 
-public class TextFileReader extends JFrame implements KeyListener {
-    private JLabel label;
+public class TextFileReader implements KeyListener {
     private ArrayList<String> lines; // ArrayList to store lines from the text file
     private int currentIndex; // Index to keep track of current line
     private String filePath; // File path to read
@@ -16,72 +15,71 @@ public class TextFileReader extends JFrame implements KeyListener {
     public TextFileReader(String filePath, int x, int y, int dx, int dy) {
         this.filePath = filePath; // Store the file path
 
-        // Frame settings
-        setTitle("Text File Reader");
-        setSize(600, 400);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
-
-        // Initialize and configure the label
-        label = new JLabel();
-        label.setBounds(10, 10, 580, 30);
-        label.setFont(new Font("Agency FB", Font.PLAIN, 25));
-        add(label);
-
         // Button characteristics 
         text.setBounds(x, y, dx, dy); 
         text.setFont(new Font("Agency FB", Font.PLAIN, 25));
         text.setForeground(Color.WHITE);
         text.setBackground(Color.BLACK);
         text.setFocusPainted(false);
-        add(text);
 
         lines = new ArrayList<>(); // Initialize ArrayList to store lines
         currentIndex = 0; // Initialize index to 0
 
         try (Scanner in = new Scanner(new File(filePath))) {
-            ArrayList<String[]> wholeText = new ArrayList<>(); // ArrayList to store lines broken into words
-
-            // read the file
+            // Read the file
             while (in.hasNextLine()) {
-                // create temp variable to store a line
-                String theLine = in.nextLine();
-                // split the line on spaces 
-                String[] words = theLine.split(" ");
-                // add the array of strings to wholeText
-                wholeText.add(words);
-                // add the line to lines ArrayList (if you want to store lines as well)
-                lines.add(theLine);
+                // Add the line to lines ArrayList
+                lines.add(in.nextLine());
             }
 
-            // Process words or wholeText ArrayList here if needed
-
-            updateLabel(); // Update the label with the first line 
+            // Update the button with the first line
+            updateLabel();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        addKeyListener(this);
-        setFocusable(true);
-        setVisible(true);
+        text.addKeyListener(this);
+        text.setFocusable(true);
     }
 
-    // Method to update the label with the current line
+    // Method to update the button text with the current line
     private void updateLabel() {
         if (currentIndex < lines.size()) {
-            text.setText(lines.get(currentIndex)); // Set text of the label to current line
+            text.setText(lines.get(currentIndex)); // Set text of the button to current line
         } else {
             text.setText("End of file"); // Display message when end of file is reached
         }
     }
 
+    @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER) {
             currentIndex++; // Move to the next line
-            updateLabel(); // Update the label with the new line
+            updateLabel(); // Update the button with the new line
         }
     }
 
+    @Override
     public void keyTyped(KeyEvent e) {}
 
+    @Override
     public void keyReleased(KeyEvent e) {}
+
+    // Method to get the button for adding to a container
+    public JButton getButton() {
+        return text;
+    }
+
+    public static void main(String[] args) {
+        // Example usage
+        JFrame frame = new JFrame("Text File Reader");
+        frame.setSize(600, 400);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+
+        TextFileReader reader = new TextFileReader("example.txt", 50, 50, 500, 50);
+        frame.add(reader.getButton());
+
+        frame.setVisible(true);
+    }
+}
