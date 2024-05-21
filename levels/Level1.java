@@ -42,19 +42,25 @@ public class Level1 extends JFrame implements ActionListener{
         scene1.setResizable(false);
         scene1.add(bg);
         scene1.add(reader.getButton());
+        startPolling();
 
         //scene1.add(textbox);
     }
     private void startPolling() {
-        Timer timer = new Timer(1000, e -> {
+        Timer timer = new Timer(500, e -> {
             try {
                 int currentValue = reader.currentIndex;
                 switch(currentValue){
-                    case 
+                    case 1:
+                        bg.setIcon(new ImageIcon(frame2));
+                        TextFileReader.allowprogess = false;
+                    default:
+                        System.out.println("uh");
+
                 }
                 
-            } catch (IOException ex) {
-                ex.printStackTrace();
+            } catch (Error er) {
+                System.out.println(er);
             }
         });
         timer.start();
