@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.FileReader;
 import java.awt.event.ActionEvent;
 
 
@@ -17,7 +18,7 @@ import java.awt.event.ActionEvent;
 public class Level1 extends JFrame implements ActionListener{
 
     // Creating a button
-    JButton textbox;
+    new TextFileReader.TextFileReader("levels\\images\\lv1dialogue.txt", 0, 600, 800, 200);
     
     // Constructor
     public Level1(){
@@ -44,7 +45,7 @@ public class Level1 extends JFrame implements ActionListener{
         scene1.setVisible(true);
         scene1.setResizable(false);
         scene1.add(bgimg);
-        scene1.add(TextFileReader.text);
+        scene1.add();
         //scene1.add(textbox);
     }
 
