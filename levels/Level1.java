@@ -3,52 +3,57 @@
  */
 package levels;
 
-// Importing necessary libraries
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.io.FileReader;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 
-
-// Class definition
-public class Level1 extends JFrame implements ActionListener{
+public class Level1 extends JFrame implements ActionListener {
 
     // Creating a button
-    TextFileReader reader =new TextFileReader("levels\\images\\lv1dialogue.txt", 0, 600, 800, 200);
-    
+    private TextFileReader reader;
+
     // Constructor
-    public Level1(){
+    public Level1() {
+        // Initialize the TextFileReader
+        reader = new TextFileReader("levels\\images\\lv1dialogue.txt", 0, 600, 800, 200);
 
-         // Background image
+        // Setting frame properties
+        setTitle("Level 1");
+        setSize(800, 800);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);
+
+        // Creating and setting a background image
         ImageIcon questionmarkbackground = new ImageIcon("levels\\images\\Frame1-1.PNG");
-        ImageIcon textboxthingy = new ImageIcon("textbox.png"); 
-
-
-
-
-        // Creating a JLabel for background image
         JLabel bgimg = new JLabel();
         bgimg.setIcon(questionmarkbackground);
+        bgimg.setBounds(0, 0, 800, 800);
 
+        // Creating the textbox button
+        ImageIcon textboxthingy = new ImageIcon("textbox.png");
+        JButton textbox = new JButton();
+        textbox.setIcon(textboxthingy);
+        textbox.setBounds(0, 500, 200, 100);
+        textbox.addActionListener(e -> System.out.println("click"));
 
-        // Creating and setting up the main frame
-        JFrame scene1 = new JFrame();
-        scene1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        scene1.setSize(800, 800);
-        scene1.setVisible(true);
-        scene1.setResizable(false);
-        scene1.add(bgimg);
-        scene1.add(reader.getButton());
-        //scene1.add(textbox);
+        // Adding components to the frame
+        add(bgimg);
+        add(reader.getButton());
+        add(textbox);
+
+        // Ensuring background image is on the bottom layer
+        getContentPane().setComponentZOrder(bgimg, getContentPane().getComponentCount() - 1);
+
+        setVisible(true);
     }
 
-    // This method is triggered when a button is pressed
     @Override
-    public void actionPerformed(ActionEvent e) { 
-    
+    public void actionPerformed(ActionEvent e) {
+        // Handle action events if needed
+    }
+
+    public static void main(String[] args) { 
+        // example usage 
+        new Level1();
     }
 }
