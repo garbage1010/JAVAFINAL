@@ -2,11 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Level1 extends JFrame implements ActionListener {
-
-    int framecounter = 1;
-    int textcounter = 1;
 
     Timer timer;
 
@@ -69,8 +70,8 @@ public class Level1 extends JFrame implements ActionListener {
                     default:
                         System.out.println(reader.currentIndex);
                 }
-            } catch (Error er) {
-                System.out.println(er);
+            } catch (Exception er) {
+                System.err.println("Error: " + er.getMessage());
             }
         });
         timer.start();
