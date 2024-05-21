@@ -6,7 +6,8 @@ import java.util.*;
 
 public class TextFileReader implements KeyListener {
     private ArrayList<String> lines; // ArrayList to store lines from the text file
-    private int currentIndex; // Index to keep track of current line
+    public int currentIndex; // Index to keep track of current line
+    public boolean allowprogress = true;
     private String filePath; // File path to read
     
     // Make text box button
@@ -21,6 +22,7 @@ public class TextFileReader implements KeyListener {
         text.setForeground(Color.WHITE);
         text.setBackground(Color.BLACK);
         text.setFocusPainted(false);
+        text.setFocusable(false);
 
         lines = new ArrayList<>(); // Initialize ArrayList to store lines
         currentIndex = 0; // Initialize index to 0
@@ -53,7 +55,7 @@ public class TextFileReader implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (e.getKeyCode() == KeyEvent.VK_ENTER && allowprogress) {
             currentIndex++; // Move to the next line
             updateLabel(); // Update the button with the new line
         }

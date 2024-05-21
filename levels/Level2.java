@@ -1,7 +1,7 @@
 /*
  * Level 2 - 5635290595
  */
-package levels;
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton; 
@@ -17,7 +17,6 @@ public class Level2 extends JFrame implements ActionListener{
     int framecounter = 1; //what frame are we on
     
     //background image 
-    //I have no idea how to access the subfolder images so forgive me but I have to leave it this way for now. I'll change it when I figure it out
     Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\Frame4-1.PNG"); 
     Image frame2 = Toolkit.getDefaultToolkit().getImage("C:/Users/rory5/OneDrive/Documents/GitHub/JAVAFINAL/levels/images/Frame4-2.PNG");
 
