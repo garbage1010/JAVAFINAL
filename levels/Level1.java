@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 public class Level1 extends JFrame implements ActionListener{
 
     // Creating a button
-    new TextFileReader.TextFileReader("levels\\images\\lv1dialogue.txt", 0, 600, 800, 200);
+    TextFileReader reader =new TextFileReader("levels\\images\\lv1dialogue.txt", 0, 600, 800, 200);
     
     // Constructor
     public Level1(){
@@ -27,11 +27,8 @@ public class Level1 extends JFrame implements ActionListener{
         ImageIcon questionmarkbackground = new ImageIcon("levels\\images\\Frame1-1.PNG");
         ImageIcon textboxthingy = new ImageIcon("textbox.png"); 
 
-        textbox = new JButton();
-        // Setting button dimensions
-        textbox.setIcon(textboxthingy); 
-        textbox.setBounds(0, 500, 20, 10);
-        textbox.addActionListener(e -> System.out.println("click"));
+
+
 
         // Creating a JLabel for background image
         JLabel bgimg = new JLabel();
@@ -45,7 +42,7 @@ public class Level1 extends JFrame implements ActionListener{
         scene1.setVisible(true);
         scene1.setResizable(false);
         scene1.add(bgimg);
-        scene1.add();
+        scene1.add(reader.getButton());
         //scene1.add(textbox);
     }
 

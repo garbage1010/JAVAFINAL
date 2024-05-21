@@ -10,7 +10,7 @@ public class TextFileReader implements KeyListener {
     private String filePath; // File path to read
     
     // Make text box button
-    public JButton text = new JButton();
+    private JButton text = new JButton();
 
     public TextFileReader(String filePath, int x, int y, int dx, int dy) {
         this.filePath = filePath; // Store the file path
