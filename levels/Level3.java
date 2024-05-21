@@ -19,7 +19,7 @@ package levels;
         // Adding action listener to the reader button
         reader.getButton().addActionListener(e -> {
             index++;
-            if (index % 10 == 0) { //change bg event 10 lines of text. ill add fluff so that this works
+            if (index % 1 == 0) { //change bg every line. this wont work on other levels sorry 
                 updateBackground();
             }
             if (index == 5) { // Activate the timing mini game during the fifth frame
