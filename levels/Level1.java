@@ -30,6 +30,7 @@ public class Level1 extends JFrame implements ActionListener{
     Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-1.PNG"); 
     Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-2-1.PNG");
     Image frame3 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-2-2.PNG");
+    Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-2-3.png");
 
     JLabel bg = new JLabel(); //Label to be used as background
 
@@ -63,8 +64,9 @@ public class Level1 extends JFrame implements ActionListener{
         timer = new Timer(500, e -> {
             try {
                 int currentValue = reader.currentIndex;
-                switch(currentValue){
+                switch(reader.currentIndex){
                     case 4:
+                        System.out.println(reader.currentIndex);
                         timer.stop();
                         reader.setProgress(false);
                         bg.setIcon(new ImageIcon(frame2));
@@ -77,12 +79,15 @@ public class Level1 extends JFrame implements ActionListener{
                             scene1.remove(errorbutton);
                             timer.start();
                         });
+                        System.out.println(reader.currentIndex);
+                        break;
                     case 5:
+                        System.out.println(reader.currentIndex);
                         timer.stop();
                         reader.setProgress(false);
                         bg.setIcon(new ImageIcon(frame3));
                         scene1.add(errorbutton);
-                        errorbutton.setBounds();
+                        errorbutton.setBounds(449, 351, 30, 30);
                         errorbutton.addActionListener(l -> {
                             reader.setProgress(true);
                             reader.currentIndex++;
@@ -90,9 +95,26 @@ public class Level1 extends JFrame implements ActionListener{
                             scene1.remove(errorbutton);
                             timer.start();
                         });
+                        System.out.println(reader.currentIndex);
+                        break;
+                    case 7:
+                        System.out.println(reader.currentIndex);
+                        timer.stop();
+                        reader.setProgress(false);
+                        bg.setIcon(new ImageIcon(frame4));
+                        scene1.add(errorbutton);
+                        errorbutton.setBounds(441, 237, 50, 50);
+                        errorbutton.addActionListener(l -> {
+                            reader.setProgress(true);
+                            reader.updateLabel();
+                            scene1.remove(errorbutton);
+                            timer.start();
+                        });
+                        reader.currentIndex = 8;
+                        System.out.println(reader.currentIndex);
+                        break;
                     default:
                         System.out.println(reader.currentIndex);
-
                 }
                 
             } catch (Error er) {
