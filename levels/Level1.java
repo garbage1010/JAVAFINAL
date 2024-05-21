@@ -31,6 +31,9 @@ public class Level1 extends JFrame implements ActionListener{
     Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-2-1.PNG");
     Image frame3 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-2-2.PNG");
     Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-2-3.png");
+    Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-3.png");
+    Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-4.png");
+
 
     JLabel bg = new JLabel(); //Label to be used as background
 
@@ -40,7 +43,7 @@ public class Level1 extends JFrame implements ActionListener{
     // Constructor
     public Level1(){
 
-        errorbutton.setOpaque(false);
+        //errorbutton.setOpaque(false);
 
         // Creating a JLabel for background image
         bg.setBounds(0, 0, 800, 600);
@@ -90,7 +93,7 @@ public class Level1 extends JFrame implements ActionListener{
                         errorbutton.setBounds(449, 351, 30, 30);
                         errorbutton.addActionListener(l -> {
                             reader.setProgress(true);
-                            reader.currentIndex++;
+                            reader.currentIndex = 6;
                             reader.updateLabel();
                             scene1.remove(errorbutton);
                             timer.start();
@@ -106,13 +109,27 @@ public class Level1 extends JFrame implements ActionListener{
                         errorbutton.setBounds(441, 237, 50, 50);
                         errorbutton.addActionListener(l -> {
                             reader.setProgress(true);
+                            ++reader.currentIndex;
                             reader.updateLabel();
                             scene1.remove(errorbutton);
                             timer.start();
                         });
-                        reader.currentIndex = 8;
                         System.out.println(reader.currentIndex);
                         break;
+                    case 8:
+                        System.out.println(reader.currentIndex);
+                        timer.stop();
+                        reader.setProgress(false);
+                        bg.setIcon(new ImageIcon(frame5));
+
+                        break;
+                    case 9:
+                        System.out.println(reader.currentIndex);
+                        timer.stop();
+                        reader.setProgress(false);
+                        bg.setIcon(new ImageIcon(frame6));
+                        break;
+                            
                     default:
                         System.out.println(reader.currentIndex);
                 }
