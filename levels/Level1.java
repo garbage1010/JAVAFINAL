@@ -2,6 +2,7 @@
  * "This creates the class for the first level of the game"
  */
 
+<<<<<<< HEAD
 
 <<<<<<< Updated upstream
 import javax.swing.*;
@@ -19,12 +20,26 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 >>>>>>> Stashed changes
+=======
+// Importing necessary libraries
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.io.FileReader;
+import java.awt.event.ActionEvent;
+>>>>>>> parent of d9b6966 (Update Level1.java)
 
-public class Level1 extends JFrame implements ActionListener {
+
+// Class definition
+public class Level1 extends JFrame implements ActionListener{
 
     int framecounter = 1;
     int textcounter = 1;
     // Creating a button
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     private TextFileReader reader;
 
@@ -34,11 +49,14 @@ public class Level1 extends JFrame implements ActionListener {
     Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\Frame1-2.PNG");
     JLabel bg = new JLabel(); //Label to be used as background
 >>>>>>> Stashed changes
+=======
+    TextFileReader reader =new TextFileReader("levels\\images\\lv1dialogue.txt", 0, 600, 800, 200);
+    
+>>>>>>> parent of d9b6966 (Update Level1.java)
     // Constructor
-    public Level1() {
-        // Initialize the TextFileReader
-        reader = new TextFileReader("levels\\images\\lv1dialogue.txt", 0, 600, 800, 200);
+    public Level1(){
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         // Setting frame properties
         setTitle("Level 1");
@@ -47,23 +65,30 @@ public class Level1 extends JFrame implements ActionListener {
         setLayout(null);
 
         // Creating and setting a background image
+=======
+         // Background image
+>>>>>>> parent of d9b6966 (Update Level1.java)
         ImageIcon questionmarkbackground = new ImageIcon("levels\\images\\Frame1-1.PNG");
+        ImageIcon textboxthingy = new ImageIcon("textbox.png"); 
+
+
+
+
+        // Creating a JLabel for background image
         JLabel bgimg = new JLabel();
         bgimg.setIcon(questionmarkbackground);
+<<<<<<< HEAD
         bgimg.setBounds(0, 0, 800, 800);
 =======
         // Creating a JLabel for background image
         bg.setBounds(0, 0, 800, 600);
         bg.setIcon(new ImageIcon(frame1));
 >>>>>>> Stashed changes
+=======
+>>>>>>> parent of d9b6966 (Update Level1.java)
 
-        // Creating the textbox button
-        ImageIcon textboxthingy = new ImageIcon("textbox.png");
-        JButton textbox = new JButton();
-        textbox.setIcon(textboxthingy);
-        textbox.setBounds(0, 500, 200, 100);
-        textbox.addActionListener(e -> System.out.println("click"));
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         // Adding components to the frame
         add(bgimg);
@@ -105,13 +130,22 @@ public class Level1 extends JFrame implements ActionListener {
     }
     // This method is triggered when a button is pressed
 >>>>>>> Stashed changes
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        // Handle action events if needed
+=======
+        // Creating and setting up the main frame
+        JFrame scene1 = new JFrame();
+        scene1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        scene1.setSize(800, 800);
+        scene1.setVisible(true);
+        scene1.setResizable(false);
+        scene1.add(bgimg);
+        scene1.add(reader.getButton());
+        //scene1.add(textbox);
     }
 
-    public static void main(String[] args) { 
-        // example usage 
-        new Level1();
+    // This method is triggered when a button is pressed
+>>>>>>> parent of d9b6966 (Update Level1.java)
+    @Override
+    public void actionPerformed(ActionEvent e) { 
+    
     }
 }
