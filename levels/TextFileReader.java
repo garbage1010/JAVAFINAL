@@ -45,7 +45,7 @@ public class TextFileReader implements KeyListener {
     }
 
     // Method to update the button text with the current line
-    private void updateLabel() {
+    public void updateLabel() {
         if (currentIndex < lines.size()) {
             text.setText(lines.get(currentIndex)); // Set text of the button to current line
         } else {
