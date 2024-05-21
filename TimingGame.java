@@ -34,7 +34,7 @@ public class TimingGame extends JFrame implements ActionListener {
                 // Randomly change button color and text
                 if (Math.random() < 0.5) {
                     button.setBackground(Color.GREEN);
-                    button.setText("Press Now!");
+                    button.setText("TAKE THE SHOT!");
                     isGreen = true;
                 } else {
                     button.setBackground(Color.RED);
