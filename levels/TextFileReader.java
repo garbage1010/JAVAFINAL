@@ -16,11 +16,25 @@ public class TextFileReader extends JFrame implements KeyListener {
     public TextFileReader(String filePath, int x, int y, int dx, int dy) {
         this.filePath = filePath; // Store the file path
 
+        // Frame settings
+        setTitle("Text File Reader");
+        setSize(600, 400);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(null);
+
+        // Initialize and configure the label
+        label = new JLabel();
+        label.setBounds(10, 10, 580, 30);
+        label.setFont(new Font("Agency FB", Font.PLAIN, 25));
+        add(label);
+
         // Button characteristics 
-        text.setBounds(x,y,dx,dy); 
+        text.setBounds(x, y, dx, dy); 
         text.setFont(new Font("Agency FB", Font.PLAIN, 25));
         text.setForeground(Color.WHITE);
-        add(label);
+        text.setBackground(Color.BLACK);
+        text.setFocusPainted(false);
+        add(text);
 
         lines = new ArrayList<>(); // Initialize ArrayList to store lines
         currentIndex = 0; // Initialize index to 0
@@ -71,5 +85,3 @@ public class TextFileReader extends JFrame implements KeyListener {
     public void keyTyped(KeyEvent e) {}
 
     public void keyReleased(KeyEvent e) {}
-
-}
