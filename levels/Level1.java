@@ -51,9 +51,9 @@ public class Level1 extends JFrame implements ActionListener{
             try {
                 int currentValue = reader.currentIndex;
                 switch(currentValue){
-                    case 1:
+                    case 4:
                         bg.setIcon(new ImageIcon(frame2));
-                        TextFileReader.allowprogess = false;
+                        reader.setProgress(false);
                     default:
                         System.out.println("uh");
 

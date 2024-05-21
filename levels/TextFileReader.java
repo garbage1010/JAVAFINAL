@@ -18,7 +18,7 @@ public class TextFileReader implements KeyListener {
 
         // Button characteristics 
         text.setBounds(x, y, dx, dy); 
-        text.setFont(new Font("Agency FB", Font.PLAIN, 25));
+        text.setFont(new Font("Agency FB", Font.PLAIN, 20));
         text.setForeground(Color.WHITE);
         text.setBackground(Color.BLACK);
         text.setFocusPainted(false);
@@ -70,6 +70,10 @@ public class TextFileReader implements KeyListener {
     // Method to get the button for adding to a container
     public JButton getButton() {
         return text;
+    }
+    
+    public void setProgress(boolean allowprogress){
+        this.allowprogress = allowprogress;
     }
 
     public static void main(String[] args) {
