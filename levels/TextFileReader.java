@@ -9,15 +9,15 @@ public class TextFileReader implements KeyListener {
     public int currentIndex; // Index to keep track of current line
     public boolean allowprogress = true;
     private String filePath; // File path to read
-    
+
     // Make text box button
     private JButton text = new JButton();
 
     public TextFileReader(String filePath, int x, int y, int dx, int dy) {
         this.filePath = filePath; // Store the file path
 
-        // Button characteristics 
-        text.setBounds(x, y, dx, dy); 
+        // Button characteristics
+        text.setBounds(x, y, dx, dy);
         text.setFont(new Font("Agency FB", Font.PLAIN, 20));
         text.setForeground(Color.WHITE);
         text.setBackground(Color.BLACK);
@@ -46,18 +46,22 @@ public class TextFileReader implements KeyListener {
 
     // Method to update the button text with the current line
     public void updateLabel() {
+        System.out.println("Updating label. Current index: " + currentIndex); // Debug print
         if (currentIndex < lines.size()) {
             text.setText(lines.get(currentIndex)); // Set text of the button to current line
         } else {
             text.setText("End of file"); // Display message when end of file is reached
         }
+        System.out.println("Label updated to: " + text.getText()); // Debug print
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_ENTER && allowprogress) {
+            System.out.println("Enter key pressed. Current index: " + currentIndex); // Debug print
             currentIndex++; // Move to the next line
             updateLabel(); // Update the button with the new line
+            System.out.println("Index after pressing Enter: " + currentIndex); // Debug print
         }
     }
 
@@ -71,9 +75,10 @@ public class TextFileReader implements KeyListener {
     public JButton getButton() {
         return text;
     }
-    
-    public void setProgress(boolean allowprogress){
+
+    public void setProgress(boolean allowprogress) {
         this.allowprogress = allowprogress;
+        System.out.println("Allow progress set to: " + allowprogress); // Debug print
     }
 
     public static void main(String[] args) {

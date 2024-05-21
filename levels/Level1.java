@@ -10,7 +10,6 @@ public class Level1 extends JFrame implements ActionListener {
 
     Timer timer;
 
-    // Assuming TextFileReader is a valid class
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv1dialogue.txt", 0, 600, 800, 200);
 
     // Images used

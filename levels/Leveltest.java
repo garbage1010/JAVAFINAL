@@ -5,6 +5,6 @@ public class Leveltest
    {
       //create Instance of Level1
       //@SuppressWarnings("unused")
-      new Level1();
+      new Level2();
    }
 }
