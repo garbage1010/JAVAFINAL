@@ -18,7 +18,7 @@ public class Level2 extends JFrame implements ActionListener{
 
     int framecounter = 1; //what frame are we on
     String key = "1011110110111101100000011111110111111101";
-
+    
     Timer timer;
 
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv2dialogue.txt", 0, 600, 800, 200);
