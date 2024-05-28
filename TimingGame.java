@@ -18,7 +18,7 @@ public class TimingGame extends JFrame implements ActionListener {
 
         // Create the button
         button = new JButton("Wait...");
-        button.setFont(new Font("Arial", Font.BOLD, 20));
+        button.setFont(new Font("Agency FB", Font.BOLD, 20));
         button.setBackground(Color.RED);
         button.setOpaque(true);
         button.setBorderPainted(false);
