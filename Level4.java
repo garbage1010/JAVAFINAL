@@ -13,9 +13,9 @@ public class Level4 extends JFrame implements ActionListener {
 
     public boolean isvisible = true;
 
-    TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv1dialogue.txt", 0, 600, 800, 200);
+    TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv4dialogue.txt", 0, 600, 800, 200);
 
-    // Images used
+    // Images used. Change as needed 
     Image frame1 = placeholder;
     Image frame2 = placeholder;
     Image frame3 = placeholder;
