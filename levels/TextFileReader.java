@@ -6,7 +6,7 @@ import java.util.*;
 
 public class TextFileReader implements KeyListener {
     private ArrayList<String> lines; // ArrayList to store lines from the text file
-    public int currentIndex; // Index to keep track of current line
+    public int currentIndex; // Index to keep track of the current line
     public boolean allowprogress = true;
     private String filePath; // File path to read
 
@@ -22,7 +22,7 @@ public class TextFileReader implements KeyListener {
         text.setForeground(Color.WHITE);
         text.setBackground(Color.BLACK);
         text.setFocusPainted(false);
-        text.setFocusable(false);
+        text.setFocusable(true); // Allow the button to gain focus to receive key events
 
         lines = new ArrayList<>(); // Initialize ArrayList to store lines
         currentIndex = 0; // Initialize index to 0
@@ -41,16 +41,15 @@ public class TextFileReader implements KeyListener {
         }
 
         text.addKeyListener(this);
-        text.setFocusable(true);
     }
 
     // Method to update the button text with the current line
     public void updateLabel() {
         System.out.println("Updating label. Current index: " + currentIndex); // Debug print
         if (currentIndex < lines.size()) {
-            text.setText(lines.get(currentIndex)); // Set text of the button to current line
+            text.setText(lines.get(currentIndex)); // Set text of the button to the current line
         } else {
-            text.setText("End of file"); // Display message when end of file is reached
+            text.setText("End of file"); // Display message when the end of the file is reached
         }
         System.out.println("Label updated to: " + text.getText()); // Debug print
     }
@@ -94,3 +93,4 @@ public class TextFileReader implements KeyListener {
         frame.setVisible(true);
     }
 }
+
