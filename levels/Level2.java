@@ -49,7 +49,20 @@ public class Level2 extends JFrame implements ActionListener{
         cipher.setBounds(425, 375, 100, 100);
         cipher.setOpaque(false);
 
-
+        try{ // Audio stuff
+		// Open an audio input stream
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("lvl2ambience.mp3").getAbsoluteFile());
+            // Get a clip resource
+            Clip clip = AudioSystem.getClip();
+            // Open audio clip and load samples from the audio input stream
+            clip.open(audioInputStream);
+            // Loop the clip infinitely
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            // Start the clip
+            clip.start();
+		} catch (Exception e) {
+            System.err.println("Error playing background sound: " + e.getMessage());
+        }
 
         //create scene
         scene.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
