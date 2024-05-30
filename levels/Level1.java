@@ -51,6 +51,7 @@ public class Level1 extends JFrame implements ActionListener {
         timer = new Timer(500, e -> {
             try {
                 int currentIndex = reader.currentIndex;
+                System.out.println("Current Index: " + currentIndex); // Debug print
                 switch (currentIndex) {
                     case 4:
                         updateFrame(reader, frame2, 385, 240, 30, 30, 5);
@@ -71,6 +72,8 @@ public class Level1 extends JFrame implements ActionListener {
                         break;
                     default:
                         System.out.println(reader.currentIndex);
+                        reader.updateLabel(); // Ensure label updates even in default case
+                        break;
                 }
             } catch (Exception er) {
                 System.err.println("Error: " + er.getMessage());
@@ -80,12 +83,14 @@ public class Level1 extends JFrame implements ActionListener {
     }
 
     private void updateFrame(TextFileReader reader, Image frame, int x, int y, int width, int height, int nextIndex) {
+        System.out.println("Updating frame for index: " + reader.currentIndex); // Debug print
         timer.stop();
         reader.setProgress(false);
         bg.setIcon(new ImageIcon(frame));
         add(errorbutton);
         errorbutton.setBounds(x, y, width, height);
         errorbutton.addActionListener(l -> {
+            System.out.println("Error button pressed for next index: " + nextIndex); // Debug print
             reader.setProgress(true);
             reader.currentIndex = nextIndex;
             reader.updateLabel();
