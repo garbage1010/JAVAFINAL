@@ -1,0 +1,8 @@
+The reason levle 1 doesn't really work is because the frames change with the TextFileReader, but when 
+you add input using a button that isn't connected to the text file reader, the method responsible for 
+updating the frames gets confused and it doesn't update the label. In order to fix this, we'd just need 
+to add extra lines during minigames that require the user to put in input outside of the text box. We'd 
+make a boolean variable that disables clicking the text box when it's set to true, and change the button 
+that actually gives us input to the button the player is meant to press. This could mean merging all the
+minigames and find the error clickables with the text file reader, but I'll see if I can manage without 
+doing that. 
