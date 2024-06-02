@@ -1,11 +1,5 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-import java.util.*;
-
-public class TextFileReader implements KeyListener {
-    private ArrayList<String> lines; // ArrayList to store lines from the text file
+class TextFileReader implements KeyListener {
+    ArrayList<String> lines; // ArrayList to store lines from the text file
     public int currentIndex; // Index to keep track of the current line
     public boolean allowprogress = true;
     private String filePath; // File path to read
@@ -79,18 +73,4 @@ public class TextFileReader implements KeyListener {
         this.allowprogress = allowprogress;
         System.out.println("Allow progress set to: " + allowprogress); // Debug print
     }
-
-    public static void main(String[] args) {
-        // Example usage
-        JFrame frame = new JFrame("Text File Reader");
-        frame.setSize(600, 400);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(null);
-
-        TextFileReader reader = new TextFileReader("example.txt", 50, 50, 500, 50);
-        frame.add(reader.getButton());
-
-        frame.setVisible(true);
-    }
 }
-

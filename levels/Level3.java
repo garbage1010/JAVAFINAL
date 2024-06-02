@@ -1,62 +1,112 @@
-package levels;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-// Constructor
+public class Level3 extends JFrame implements ActionListener {
+
+    Timer timer;
+
+    public boolean isvisible = true;
+
+    TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv3dialogue.txt", 0, 600, 800, 200);
+
+    // Images used
+    Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-1.PNG");
+    Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-2.PNG");
+    Image frame3 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-3.PNG");
+    Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-4.PNG");
+    Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-5.PNG");
+    Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-6.PNG");
+
+    JLabel bg = new JLabel(); // Label to be used as background
+    JButton errorbutton = new JButton();
+
+    // Constructor
     public Level3() {
-        // Initialize the TextFileReader
-        reader = new TextFileReader("levels/images/lv3dialogue.txt", 0, 600, 800, 200);
-
-        // Setting frame properties
-        setTitle("Level 3");
-        setSize(800, 800);
+        // Setup the main frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(800, 800);
         setLayout(null);
-
-        // Creating and setting a background image
-        bgimg = new JLabel();
-        bgimg.setBounds(0, 0, 800, 800);
-        updateBackground();
-
-        // Adding action listener to the reader button
-        reader.getButton().addActionListener(e -> {
-            index++;
-            if (index % 1 == 0) { //change bg every line. this wont work on other levels sorry 
-                updateBackground();
-            }
-            if (index == 5) { // Activate the timing mini game during the fifth frame
-                new TimingGame();
-            }
-        });
-
-        // Creating the textbox button
-        ImageIcon textboxthingy = new ImageIcon("textbox.png");
-        JButton textbox = new JButton();
-        textbox.setIcon(textboxthingy);
-        textbox.setBounds(0, 500, 200, 100);
-        textbox.addActionListener(e -> System.out.println("click"));
-
-        // Adding components to the frame
-        add(bgimg);
-        add(reader.getButton());
-        add(textbox);
-
-        // Ensuring background image is on the bottom layer
-        getContentPane().setComponentZOrder(bgimg, getContentPane().getComponentCount() - 1);
-
         setVisible(true);
+        setResizable(false);
+
+        // Setup background label
+        bg.setBounds(0, 0, 800, 600);
+        bg.setIcon(new ImageIcon(frame1));
+        add(bg);
+
+        // Add the reader button
+        add(reader.getButton());
+
+        // Start the timer
+        startPolling();
     }
 
-    // Method to update the background image
-    private void updateBackground() {
-        ImageIcon newBackground = new ImageIcon(bgImages[index % bgImages.length]);
-        bgimg.setIcon(newBackground);
+    private void startPolling() {
+        timer = new Timer(500, e -> {
+            try {
+                int currentIndex = reader.currentIndex;
+                System.out.println("Current Index: " + currentIndex); // Debug print
+                switch (currentIndex) {
+                    case 4:
+                        updateFrame(reader, frame2, 385, 240, 30, 30, 5);
+                        break;
+                    case 5:
+                        updateFrame(reader, frame3, 449, 351, 30, 30, 6);
+                        break;
+                    case 7:
+                        updateFrame(reader, frame4, 441, 237, 50, 50, 8);
+                        break;
+                    case 8:
+                        bg.setIcon(new ImageIcon(frame5));
+                        timer.stop();
+                        break;
+                    case 9:
+                        bg.setIcon(new ImageIcon(frame6));
+                        timer.stop();
+                        break;
+                    default:
+                        if (currentIndex < reader.lines.size()) {
+                            reader.updateLabel(); // Ensure label updates even in default case
+                            reader.currentIndex++;
+                        }
+                        break;
+                }
+            } catch (Exception er) {
+                System.err.println("Error: " + er.getMessage());
+            }
+        });
+        timer.start();
+    }
+
+    private void updateFrame(TextFileReader reader, Image frame, int x, int y, int width, int height, int nextIndex) {
+        System.out.println("Updating frame for index: " + reader.currentIndex); // Debug print
+        timer.stop();
+        reader.setProgress(false);
+        bg.setIcon(new ImageIcon(frame));
+        add(errorbutton);
+        errorbutton.setBounds(x, y, width, height);
+        errorbutton.addActionListener(l -> {
+            System.out.println("Error button pressed for next index: " + nextIndex); // Debug print
+            reader.setProgress(true);
+            reader.currentIndex = nextIndex;
+            reader.updateLabel();
+            remove(errorbutton);
+            timer.start();
+        });
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Handle action events if needed
+        // Handle button actions if necessary
     }
 
     public static void main(String[] args) {
-        new Level3();
+        SwingUtilities.invokeLater(() -> new Level3());
     }
 }

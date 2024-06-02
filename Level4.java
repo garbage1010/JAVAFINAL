@@ -15,13 +15,13 @@ public class Level4 extends JFrame implements ActionListener {
 
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv4dialogue.txt", 0, 600, 800, 200);
 
-    // Images used. Change as needed 
-    Image frame1 = placeholder;
-    Image frame2 = placeholder;
-    Image frame3 = placeholder;
-    Image frame4 = placeholder;
-    Image frame5 = placeholder;
-    Image frame6 = placeholder; 
+    // Images used
+    Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-1.PNG");
+    Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-2.PNG");
+    Image frame3 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-3.PNG");
+    Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-4.PNG");
+    Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-5.PNG");
+    Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-6.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
     JButton errorbutton = new JButton();
@@ -51,6 +51,7 @@ public class Level4 extends JFrame implements ActionListener {
         timer = new Timer(500, e -> {
             try {
                 int currentIndex = reader.currentIndex;
+                System.out.println("Current Index: " + currentIndex); // Debug print
                 switch (currentIndex) {
                     case 4:
                         updateFrame(reader, frame2, 385, 240, 30, 30, 5);
@@ -70,28 +71,17 @@ public class Level4 extends JFrame implements ActionListener {
                         timer.stop();
                         break;
                     default:
-                        System.out.println(reader.currentIndex);
+                        if (currentIndex < reader.lines.size()) {
+                            reader.updateLabel(); // Ensure label updates even in default case
+                            reader.currentIndex++;
+                        }
+                        break;
                 }
             } catch (Exception er) {
                 System.err.println("Error: " + er.getMessage());
             }
         });
         timer.start();
-    }
-
-    private void updateFrame(TextFileReader reader, Image frame, int x, int y, int width, int height, int nextIndex) {
-        timer.stop();
-        reader.setProgress(false);
-        bg.setIcon(new ImageIcon(frame));
-        add(errorbutton);
-        errorbutton.setBounds(x, y, width, height);
-        errorbutton.addActionListener(l -> {
-            reader.setProgress(true);
-            reader.currentIndex = nextIndex;
-            reader.updateLabel();
-            remove(errorbutton);
-            timer.start();
-        });
     }
 
     @Override
