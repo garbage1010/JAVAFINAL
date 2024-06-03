@@ -123,7 +123,7 @@ public class Level2 extends JFrame implements ActionListener {
 
         // Timer to check when the minigame ends
         Timer checkEndTimer = new Timer(100, e -> {
-            if (!minigame.isRunning()) {
+            if (!minigame.runningCheck()) {
                 int mashCount = minigame.getMashCount();
                 endMinigame(mashCount);
                 ((Timer) e.getSource()).stop();
@@ -153,6 +153,6 @@ public class Level2 extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Level2());
+        new Level2();
     }
 }

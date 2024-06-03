@@ -73,4 +73,8 @@ public class ButtonMashingMinigame extends JPanel implements KeyListener, Action
     public int getMashCount() {
         return mashCount;
     }
+
+    public boolean runningCheck() {
+        return isRunning;
+    }
 }

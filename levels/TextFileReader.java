@@ -1,3 +1,8 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
 class TextFileReader implements KeyListener {
     ArrayList<String> lines; // ArrayList to store lines from the text file
     public int currentIndex; // Index to keep track of the current line
