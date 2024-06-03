@@ -95,25 +95,6 @@ public class Level4 extends JFrame implements ActionListener {
         // Handle button actions if necessary
     }
 
-    private void saveGameState() {
-        GameSaveData saveData = new GameSaveData(4); // Save the current level (level 4)
-        GameSaveManager.saveGame(saveData);
-    }
-
-    private void loadGameState() {
-        GameSaveData saveData = GameSaveManager.loadGame();
-        if (saveData != null) {
-            // Handle loading the level state
-            int level = saveData.getPlayerLevel();
-            if (level == 4) {
-                // Continue with level 4 setup
-                System.out.println("Loaded level 4.");
-            } else {
-                System.out.println("No saved level or different level loaded.");
-            }
-        }
-    }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new Level4());
     }
