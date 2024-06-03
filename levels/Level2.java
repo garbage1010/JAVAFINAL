@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 
 public class Level2 extends JFrame implements ActionListener {
     int framecounter = 1; // What frame are we on
-    String key = "1011110110111101100000011111110111111101";
+    String key = "LEVELTWO";
     
     Timer timer;
 
