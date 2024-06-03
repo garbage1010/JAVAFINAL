@@ -2,10 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Level4 extends JFrame implements ActionListener {
 
@@ -34,6 +30,9 @@ public class Level4 extends JFrame implements ActionListener {
         setLayout(null);
         setVisible(true);
         setResizable(false);
+
+        // Load game state
+        loadGameState();
 
         // Setup background label
         bg.setBounds(0, 0, 800, 600);
@@ -84,9 +83,35 @@ public class Level4 extends JFrame implements ActionListener {
         timer.start();
     }
 
+    private void updateFrame(TextFileReader reader, Image frame, int x, int y, int width, int height, int nextIndex) {
+        reader.currentIndex = nextIndex;
+        bg.setIcon(new ImageIcon(frame));
+        errorbutton.setBounds(x, y, width, height);
+        add(errorbutton);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         // Handle button actions if necessary
+    }
+
+    private void saveGameState() {
+        GameSaveData saveData = new GameSaveData(4); // Save the current level (level 4)
+        GameSaveManager.saveGame(saveData);
+    }
+
+    private void loadGameState() {
+        GameSaveData saveData = GameSaveManager.loadGame();
+        if (saveData != null) {
+            // Handle loading the level state
+            int level = saveData.getPlayerLevel();
+            if (level == 4) {
+                // Continue with level 4 setup
+                System.out.println("Loaded level 4.");
+            } else {
+                System.out.println("No saved level or different level loaded.");
+            }
+        }
     }
 
     public static void main(String[] args) {
