@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 
 public class Level2 extends JFrame implements ActionListener {
     int framecounter = 1; // What frame are we on
-    String key = "LEVELTWO";
     
     Timer timer;
 
@@ -21,8 +20,6 @@ public class Level2 extends JFrame implements ActionListener {
     JLabel bg = new JLabel(); // Label to be used as background
     JButton cipher; // Cipher on the first frame in the shelf
     JFrame scene = new JFrame(); // Main frame
-    JTextField textfield = new JTextField();
-    JButton submit = new JButton("Submit");
 
     // Minigame
     ButtonMashingMinigame minigame = new ButtonMashingMinigame();
@@ -62,32 +59,32 @@ public class Level2 extends JFrame implements ActionListener {
                             bg.setIcon(new ImageIcon(frame2)); // Change background image
                             scene.remove(cipher);
                             scene.repaint();
+                            JTextField textfield = new JTextField();
+                            JButton submit = new JButton("Submit");
+
                             textfield.setBounds(400, 400, 350, 200);
                             submit.setBounds(300, 400, 100, 25);
                             submit.addActionListener(p -> {
-                                String uh = textfield.getText();
-                                if (uh.contains(key)) {
-                                    System.out.println(key);
-                                    reader.setProgress(true);
-                                    reader.currentIndex++;
-                                    reader.updateLabel();
-                                    scene.remove(submit);
-                                    scene.remove(textfield);
-                                    scene.repaint();
-                                    timer.start();
-                                }
+                                // Proceed to the next dialogue line and frame
+                                reader.setProgress(true);
+                                reader.currentIndex++;
+                                reader.updateLabel();
+                                scene.remove(submit);
+                                scene.remove(textfield);
+                                scene.repaint();
+                                timer.start();
                             });
                             scene.add(submit);
                             scene.add(textfield);
                         });
                         break;
                     case 4:
-                        bg.setIcon(new ImageIcon(frame3));
+                        bg.setIcon(new ImageIcon(frame3)); // Update background image
                         break;
                     case 5:
                         timer.stop();
                         reader.setProgress(false);
-                        bg.setIcon(new ImageIcon(frame4));
+                        bg.setIcon(new ImageIcon(frame4)); // Update background image
                         JButton window = new JButton();
                         window.setBounds(0, 0, 100, 100);
                         window.addActionListener(o -> {
@@ -104,7 +101,7 @@ public class Level2 extends JFrame implements ActionListener {
                         startMinigame(); // Trigger the minigame on the second-to-last frame
                         break;
                     case 7:
-                        bg.setIcon(new ImageIcon(frame5));
+                        bg.setIcon(new ImageIcon(frame5)); // Final frame after minigame
                         break;
                     default:
                         break;
@@ -116,6 +113,7 @@ public class Level2 extends JFrame implements ActionListener {
         timer.start();
     }
 
+    // Method to start the button mashing minigame
     private void startMinigame() {
         getContentPane().removeAll();
         add(minigame);
@@ -134,6 +132,7 @@ public class Level2 extends JFrame implements ActionListener {
         checkEndTimer.start();
     }
 
+    // Method to handle the end of the minigame
     private void endMinigame(int mashCount) {
         getContentPane().removeAll();
         add(bg);
