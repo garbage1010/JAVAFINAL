@@ -65,7 +65,7 @@ public class Level3 extends JFrame implements ActionListener {
                         break; 
                     case 5: 
                         bg.setIcon(frame5); 
-                        // add timing minigame here
+                        launchTimingGame(); 
                         break; 
                     default:
                         if (currentIndex < reader.lines.size()) {
@@ -80,6 +80,19 @@ public class Level3 extends JFrame implements ActionListener {
         });
         timer.start();
     }
+
+     private void launchTimingGame() {
+        // Stop the current timer
+        timer.stop();
+
+        // Create and display the TimingGame frame
+        SwingUtilities.invokeLater(() -> {
+            TimingGame timingGame = new TimingGame();
+            timingGame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            timingGame.setSize(400, 300);
+            timingGame.setVisible(true);
+            timingGame.setResizable(false);
+        });
 
     private void updateFrame(TextFileReader reader, Image frame, int x, int y, int width, int height, int nextIndex) {
         System.out.println("Updating frame for index: " + reader.currentIndex); // Debug print
