@@ -60,16 +60,5 @@ public class TimingGame extends JFrame implements ActionListener {
         button.setBackground(Color.RED);
         button.setText("Wait...");
     }
-
-    // Example usage 
-    public static void main(String[] args) {
-        // Ensure the GUI is created on the Event Dispatch Thread
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new TimingGame();
-            }
-        });
-    }
 }
 
