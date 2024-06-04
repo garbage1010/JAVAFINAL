@@ -113,22 +113,43 @@ public class Level2 extends JFrame implements ActionListener {
         timer.start();
     }
 
-    // Method to start the button mashing minigame
-    private void startMinigame() {
-        Timer bounds = new Timer(); 
-        bounds.schedule(5000); 
-        int clicks = 0; 
-        timer.stop() 
-        reader.setProgress(false); 
-        bg.setIcon(new imageIcon(frame5)); // Update bg image 
-        JButton masher = new JButton(); 
-        masher.setBounds(0, 0, 100, 100); 
-        masher.addActionListener(o -> {
-        public void actionPerfomed(actionEvent e){ 
-            //idk where to go from here sned help        
-             } 
-        } 
+  private int clicks = 0; // Declare clicks as a class variable to be accessible throughout the class
 
+    private void startMinigame() {
+        // Create a timer to limit the time for the mini-game
+        Timer bounds = new Timer(5000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Mini-game time is up, do something with the click count, like displaying it
+                System.out.println("Number of clicks: " + clicks);
+                // Optionally, you can reset the clicks for a new game
+                clicks = 0;
+            }
+        });
+        bounds.start(); // Start the timer
+
+        // Stop any existing timers
+        timer.stop();
+         // Assuming reader is an instance of some class that has a setProgress method
+        reader.setProgress(false);
+    
+        // Assuming bg is an instance of JLabel where you want to display an image
+        bg.setIcon(new ImageIcon(frame5)); // Update bg image 
+    
+        JButton masher = new JButton("Click Me!"); // Provide text for the button
+        masher.setBounds(0, 0, 100, 100);
+        // Add an ActionListener to the button to handle click events
+        masher.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Increment the click count when the button is clicked
+                clicks++;
+            }
+        });
+        // Add the button to UI
+        // and 'container' is the name of that container
+        bg.add(masher);
+}
 
     @Override
     public void actionPerformed(ActionEvent e) {
