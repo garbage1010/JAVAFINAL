@@ -12,6 +12,11 @@ public class Level4 extends JFrame implements ActionListener {
     public boolean isvisible = true;
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv4dialogue.txt", 0, 600, 800, 200);
 
+    selectSyringe = new JButton();
+        selectSyringe.setFocusable(false);
+        selectSyringe.setBounds(placeholder);
+        selectSyringe.setOpaque(false);
+
     // Images used
     Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final1.PNG");
     Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final2.PNG");
