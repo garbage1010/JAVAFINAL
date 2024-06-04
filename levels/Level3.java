@@ -21,8 +21,6 @@ public class Level3 extends JFrame implements ActionListener {
     Image frame3 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame7-1.PNG");
     Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame7-2.PNG");
     Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame7-3.PNG");
-    Image end1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\End1.PNG");
-    Image end2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\End2.PNG"); 
 
     JLabel bg = new JLabel(); // Label to be used as background
     JButton errorbutton = new JButton();
