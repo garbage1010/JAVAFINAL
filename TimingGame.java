@@ -10,12 +10,6 @@ public class TimingGame extends JFrame implements ActionListener {
     private boolean isGreen = false; // Flag to track if the button is green
 
     public TimingGame() {
-        // Set up the frame
-        setTitle("Timing Game");
-        setSize(300, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
-
         // Create the button
         button = new JButton("Wait...");
         button.setFont(new Font("Agency FB", Font.BOLD, 20));
@@ -46,9 +40,6 @@ public class TimingGame extends JFrame implements ActionListener {
 
         // Start the timer
         timer.start();
-
-        // Make the frame visible
-        setVisible(true);
     }
 
     @Override
