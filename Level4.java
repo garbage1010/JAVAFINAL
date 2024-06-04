@@ -2,13 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.FileInputStream;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 
 public class Level4 extends JFrame implements ActionListener {
 
     Timer timer;
-
     public boolean isvisible = true;
-
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv4dialogue.txt", 0, 600, 800, 200);
 
     // Images used
@@ -21,6 +22,7 @@ public class Level4 extends JFrame implements ActionListener {
 
     JLabel bg = new JLabel(); // Label to be used as background
     JButton errorbutton = new JButton();
+    private Player player; // Player for the background music
 
     // Constructor
     public Level4() {
@@ -32,7 +34,7 @@ public class Level4 extends JFrame implements ActionListener {
         setResizable(false);
 
         // Load game state
-        loadGameState();
+        // loadGameState(); // Commented out as the method is not defined
 
         // Setup background label
         bg.setBounds(0, 0, 800, 600);
@@ -42,8 +44,23 @@ public class Level4 extends JFrame implements ActionListener {
         // Add the reader button
         add(reader.getButton());
 
+        // Start the background music
+        startBackgroundMusic("levels\\images\\texts\\lvl4ambience.mp3");
+
         // Start the timer
         startPolling();
+    }
+
+    private void startBackgroundMusic(String filepath) {
+        new Thread(() -> {
+            try {
+                FileInputStream fis = new FileInputStream(filepath);
+                player = new Player(fis);
+                player.play();
+            } catch (JavaLayerException | java.io.IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     private void startPolling() {
@@ -53,17 +70,18 @@ public class Level4 extends JFrame implements ActionListener {
                 System.out.println("Current Index: " + currentIndex); // Debug print
                 switch (currentIndex) {
                     case 2: 
-                        bg.setIcon(new imageIcon(frame2)); 
+                        bg.setIcon(new ImageIcon(frame2)); 
                         break; 
                     case 3: 
-                        bg.setIcon(new imageIcon(frame3)); 
+                        bg.setIcon(new ImageIcon(frame3)); 
                         break; 
                     case 4: 
-                        bg.setIcon(new imageIcon(frame4)); 
+                        bg.setIcon(new ImageIcon(frame4)); 
                         break;
                     case 5: 
-                        bg.setIcon(new imageIcon(frame5)); 
+                        bg.setIcon(new ImageIcon(frame5)); 
                         // syringe selection minigame here
+                        break;
                     default:
                         if (currentIndex < reader.lines.size()) {
                             reader.updateLabel(); // Ensure label updates even in default case
@@ -94,3 +112,4 @@ public class Level4 extends JFrame implements ActionListener {
         SwingUtilities.invokeLater(() -> new Level4());
     }
 }
+
