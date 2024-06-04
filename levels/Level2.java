@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.FileInputStream;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 
 public class Level2 extends JFrame implements ActionListener {
     int framecounter = 1; // What frame are we on
@@ -21,8 +24,8 @@ public class Level2 extends JFrame implements ActionListener {
     JButton cipher; // Cipher on the first frame in the shelf
     JFrame scene = new JFrame(); // Main frame
 
-    // Minigame
-    ButtonMashingMinigame minigame = new ButtonMashingMinigame();
+    private int clicks = 0; // Declare clicks as a class variable to be accessible throughout the class
+    private Player player; // Player for the background music
 
     public Level2() {
         // Set background to frame size and set original icon
@@ -44,7 +47,23 @@ public class Level2 extends JFrame implements ActionListener {
         scene.add(reader.getButton());
         scene.add(bg);
         scene.add(cipher);
+
+        // Start the background music
+        startBackgroundMusic("levels\\images\\texts\\lvl2ambience.mp3");
+
         startPolling();
+    }
+
+    private void startBackgroundMusic(String filepath) {
+        new Thread(() -> {
+            try {
+                FileInputStream fis = new FileInputStream(filepath);
+                player = new Player(fis);
+                player.play();
+            } catch (JavaLayerException | java.io.IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 
     private void startPolling() {
@@ -113,8 +132,6 @@ public class Level2 extends JFrame implements ActionListener {
         timer.start();
     }
 
-  private int clicks = 0; // Declare clicks as a class variable to be accessible throughout the class
-
     private void startMinigame() {
         // Create a timer to limit the time for the mini-game
         Timer bounds = new Timer(5000, new ActionListener() {
@@ -149,7 +166,7 @@ public class Level2 extends JFrame implements ActionListener {
         // Add the button to UI
         // and 'container' is the name of that container
         bg.add(masher);
-}
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
