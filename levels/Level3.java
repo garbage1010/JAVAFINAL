@@ -54,7 +54,19 @@ public class Level3 extends JFrame implements ActionListener {
                 int currentIndex = reader.currentIndex;
                 System.out.println("Current Index: " + currentIndex); // Debug print
                 switch (currentIndex) {
-                    case // START WORKING FRAMES HERE
+                    case 2: 
+                        bg.setIcon(frame2); 
+                        break; 
+                    case 3: 
+                        bg.setIcon(frame3); 
+                        break; 
+                    case 4: 
+                        bg.setIcon(frame4); 
+                        break; 
+                    case 5: 
+                        bg.setIcon(frame5); 
+                        // add timing minigame here
+                        break; 
                     default:
                         if (currentIndex < reader.lines.size()) {
                             reader.updateLabel(); // Ensure label updates even in default case
