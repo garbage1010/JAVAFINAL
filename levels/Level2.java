@@ -8,7 +8,8 @@ import javazoom.jl.player.Player;
 
 public class Level2 extends JFrame implements ActionListener {
     int framecounter = 1; // What frame are we on
-    
+    String key = "1011110110111101100000011111110111111101"; // Key for validation
+
     Timer timer;
 
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv2dialogue.txt", 0, 600, 800, 200);
@@ -54,6 +55,7 @@ public class Level2 extends JFrame implements ActionListener {
         startPolling();
     }
 
+    // Start background music
     private void startBackgroundMusic(String filepath) {
         new Thread(() -> {
             try {
@@ -66,6 +68,7 @@ public class Level2 extends JFrame implements ActionListener {
         }).start();
     }
 
+    // Start polling to handle frame changes
     private void startPolling() {
         timer = new Timer(500, e -> {
             try {
@@ -84,14 +87,17 @@ public class Level2 extends JFrame implements ActionListener {
                             textfield.setBounds(400, 400, 350, 200);
                             submit.setBounds(300, 400, 100, 25);
                             submit.addActionListener(p -> {
-                                // Proceed to the next dialogue line and frame
-                                reader.setProgress(true);
-                                reader.currentIndex++;
-                                reader.updateLabel();
-                                scene.remove(submit);
-                                scene.remove(textfield);
-                                scene.repaint();
-                                timer.start();
+                                // Check if the input contains the key
+                                String input = textfield.getText();
+                                if (input.contains(key)) {
+                                    reader.setProgress(true);
+                                    reader.currentIndex++;
+                                    reader.updateLabel();
+                                    scene.remove(submit);
+                                    scene.remove(textfield);
+                                    scene.repaint();
+                                    timer.start();
+                                }
                             });
                             scene.add(submit);
                             scene.add(textfield);
@@ -132,40 +138,46 @@ public class Level2 extends JFrame implements ActionListener {
         timer.start();
     }
 
+    // Start the button mashing minigame
     private void startMinigame() {
         // Create a timer to limit the time for the mini-game
         Timer bounds = new Timer(5000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Mini-game time is up, do something with the click count, like displaying it
+                // Mini-game time is up, handle the click count
                 System.out.println("Number of clicks: " + clicks);
-                // Optionally, you can reset the clicks for a new game
-                clicks = 0;
+                clicks = 0; // Reset clicks for a new game
+                endMinigame(); // Proceed after minigame ends
             }
         });
         bounds.start(); // Start the timer
 
         // Stop any existing timers
         timer.stop();
-         // Assuming reader is an instance of some class that has a setProgress method
         reader.setProgress(false);
-    
-        // Assuming bg is an instance of JLabel where you want to display an image
-        bg.setIcon(new ImageIcon(frame5)); // Update bg image 
-    
-        JButton masher = new JButton("Click Me!"); // Provide text for the button
+
+        // Create the button for the minigame
+        JButton masher = new JButton("Break the window!");
         masher.setBounds(0, 0, 100, 100);
-        // Add an ActionListener to the button to handle click events
         masher.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Increment the click count when the button is clicked
-                clicks++;
+                clicks++; // Increment the click count
             }
         });
-        // Add the button to UI
-        // and 'container' is the name of that container
-        bg.add(masher);
+        bg.add(masher); // Add the button to the background
+    }
+
+    // End the minigame and proceed to the next step
+    private void endMinigame() {
+        bg.removeAll(); // Remove all components from bg
+        bg.setIcon(new ImageIcon(frame5)); // Set the final frame after minigame
+        scene.add(reader.getButton());
+        scene.repaint();
+        reader.setProgress(true);
+        reader.currentIndex++;
+        reader.updateLabel();
+        timer.start();
     }
 
     @Override
@@ -173,6 +185,6 @@ public class Level2 extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        new Level2();
+        SwingUtilities.invokeLater(() -> new Level2());
     }
 }
