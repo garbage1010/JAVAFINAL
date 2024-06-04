@@ -84,14 +84,9 @@ public class Level3 extends JFrame implements ActionListener {
      private void launchTimingGame() {
         // Stop the current timer
         timer.stop();
-
-        // Create and display the TimingGame frame
+        // Create and display the TimingGame button
         SwingUtilities.invokeLater(() -> {
             TimingGame timingGame = new TimingGame();
-            timingGame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            timingGame.setSize(400, 300);
-            timingGame.setVisible(true);
-            timingGame.setResizable(false);
         });
 
     private void updateFrame(TextFileReader reader, Image frame, int x, int y, int width, int height, int nextIndex) {
