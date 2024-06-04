@@ -115,38 +115,20 @@ public class Level2 extends JFrame implements ActionListener {
 
     // Method to start the button mashing minigame
     private void startMinigame() {
-        getContentPane().removeAll();
-        add(minigame);
-        revalidate();
-        repaint();
-        minigame.startGame();
+        Timer bounds = new Timer(); 
+        bounds.schedule(5000); 
+        int clicks = 0; 
+        timer.stop() 
+        reader.setProgress(false); 
+        bg.setIcon(new imageIcon(frame5)); // Update bg image 
+        JButton masher = new JButton(); 
+        masher.setBounds(0, 0, 100, 100); 
+        masher.addActionListener(o -> {
+        public void actionPerfomed(actionEvent e){ 
+            //idk where to go from here sned help        
+             } 
+        } 
 
-        // Timer to check when the minigame ends
-        Timer checkEndTimer = new Timer(100, e -> {
-            if (!minigame.runningCheck()) {
-                int mashCount = minigame.getMashCount();
-                endMinigame(mashCount);
-                ((Timer) e.getSource()).stop();
-            }
-        });
-        checkEndTimer.start();
-    }
-
-    // Method to handle the end of the minigame
-    private void endMinigame(int mashCount) {
-        getContentPane().removeAll();
-        add(bg);
-        add(reader.getButton());
-        scene.add(cipher); // Add other components back if needed
-        revalidate();
-        repaint();
-        System.out.println("Minigame ended. Mash count: " + mashCount);
-        reader.setProgress(true);
-        reader.currentIndex++;
-        reader.updateLabel();
-        bg.setIcon(new ImageIcon(frame5)); // Set the final frame after minigame
-        timer.start();
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
