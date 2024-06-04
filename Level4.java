@@ -54,10 +54,13 @@ public class Level4 extends JFrame implements ActionListener {
                 switch (currentIndex) {
                     case 2: 
                         bg.setIcon(new imageIcon(frame2)); 
+                        break; 
                     case 3: 
                         bg.setIcon(new imageIcon(frame3)); 
+                        break; 
                     case 4: 
                         bg.setIcon(new imageIcon(frame4)); 
+                        break;
                     case 5: 
                         bg.setIcon(new imageIcon(frame5)); 
                         // syringe selection minigame here
