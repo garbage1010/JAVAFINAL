@@ -8,7 +8,6 @@ public class TimingGame extends JFrame implements ActionListener {
     private JButton button; // Button that the player interacts with
     private Timer timer; // Timer to change the button's state
     private boolean isGreen = false; // Flag to track if the button is green
-    private boolean win = null; 
 
     public TimingGame() {
         // Create the button
@@ -48,8 +47,14 @@ public class TimingGame extends JFrame implements ActionListener {
         // Check if the button is green when pressed
         if (isGreen) {
             // continue game 
+            Image end1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\End1.PNG");
+            bg.setIcon(end1); 
+            level = 4; 
         } else {
-            // show bad end screen
+            Image end2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\End2.PNG");
+            bg.setIcon(end2); 
+            bg.close(); 
+            level = 0; 
         }
     }
 
