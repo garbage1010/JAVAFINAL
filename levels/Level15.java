@@ -10,6 +10,8 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
 
     Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Frame3-1redo.PNG");
     Image sprite = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Sprite.PNG");
+
+    Timer posTimer;
     
     JLabel bg = new JLabel();
     int spriteX = 200;  // Initial X position of the sprite
@@ -30,6 +32,20 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
         
         addKeyListener(this);
         setFocusable(true);
+    }
+
+    private void posCheck(){
+        posTimer = new Timer(250, e-> {
+            try{
+                //switch(){
+
+                }
+
+            catch(Exception ge){
+                System.out.println("Error" +ge);
+            }
+        });
+        posTimer.start();
     }
     
     @Override
