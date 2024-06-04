@@ -21,8 +21,6 @@ import java.io.IOException;
             clip.start();
 
             // Keep the program running to play the music
-            // You can use a mechanism to keep your game running
-            // This is a simple way to keep the application alive
             Thread.sleep(clip.getMicrosecondLength() / 1000);
 
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
