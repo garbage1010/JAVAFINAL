@@ -8,6 +8,7 @@ public class TimingGame extends JFrame implements ActionListener {
     private JButton button; // Button that the player interacts with
     private Timer timer; // Timer to change the button's state
     private boolean isGreen = false; // Flag to track if the button is green
+    private boolean win = null; 
 
     public TimingGame() {
         // Create the button
@@ -46,12 +47,10 @@ public class TimingGame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Check if the button is green when pressed
         if (isGreen) {
-            JOptionPane.showMessageDialog(this, "You win!");
+            // continue game 
         } else {
-            JOptionPane.showMessageDialog(this, "Game Over! You pressed too soon.");
+            // show bad end screen
         }
-        // Restart the game
-        resetGame();
     }
 
     private void resetGame() {
