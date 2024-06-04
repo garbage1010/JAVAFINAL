@@ -12,11 +12,6 @@ public class Level4 extends JFrame implements ActionListener {
     public boolean isvisible = true;
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv4dialogue.txt", 0, 600, 800, 200);
 
-    selectSyringe = new JButton();
-        selectSyringe.setFocusable(false);
-        selectSyringe.setBounds(placeholder);
-        selectSyringe.setOpaque(false);
-
     // Images used
     Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final1.PNG");
     Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final2.PNG");
@@ -85,7 +80,10 @@ public class Level4 extends JFrame implements ActionListener {
                         break;
                     case 5: 
                         bg.setIcon(new ImageIcon(frame5)); 
-                        // syringe selection minigame here
+                        selectSyringe = new JButton();
+                        selectSyringe.setFocusable(false);
+                        selectSyringe.setBounds(placeholder);
+                        selectSyringe.setOpaque(false);
                         break;
                     default:
                         if (currentIndex < reader.lines.size()) {
