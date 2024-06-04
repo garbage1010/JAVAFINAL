@@ -71,10 +71,7 @@ public class Level1 extends JFrame implements ActionListener {
                         timer.stop();
                         break;
                     default:
-                        if (currentIndex < reader.lines.size()) {
-                            reader.updateLabel(); // Ensure label updates even in default case
-                            reader.currentIndex++;
-                        }
+
                         break;
                 }
             } catch (Exception er) {
