@@ -16,12 +16,13 @@ public class Level3 extends JFrame implements ActionListener {
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv3dialogue.txt", 0, 600, 800, 200);
 
     // Images used
-    Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-1.PNG");
-    Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-2.PNG");
-    Image frame3 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-3.PNG");
-    Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-4.PNG");
-    Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-5.PNG");
-    Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame3-6.PNG");
+    Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame6-1.PNG");
+    Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame6-2.PNG");
+    Image frame3 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame7-1.PNG");
+    Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame7-2.PNG");
+    Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame7-3.PNG");
+    Image end1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\End1.PNG");
+    Image end2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\End2.PNG"); 
 
     JLabel bg = new JLabel(); // Label to be used as background
     JButton errorbutton = new JButton();
