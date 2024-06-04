@@ -8,6 +8,8 @@ import java.awt.geom.AffineTransform;
 
 public class Level15 extends JFrame implements ActionListener, KeyListener {
 
+    TextFileReader reader = new TextFileReader("levels\\images\\texts\\halldialogue.txt", 0, 560, 430, 200);
+
     Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Frame3-1redo.PNG");
     Image sprite = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Sprite.PNG");
 
@@ -16,31 +18,40 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
     JLabel bg = new JLabel();
     int spriteX = 200;  // Initial X position of the sprite
     int spriteY = 200;  // Initial Y position of the sprite
+    final int SPEED = 10;
+
     boolean movementAllowed = true; // Variable to control movement
     double angle = 0; // Angle to rotate the sprite
 
     public Level15(){
         bg.setIcon(new ImageIcon(frame1));
-        bg.setBounds(0,0,430,564);
+        bg.setBounds(0,0,430,560);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(430, 564);
+        setSize(430, 760);
         setLayout(null);
         setVisible(true);
         setResizable(false);
         add(bg);
+        add(reader.getButton());
         
         addKeyListener(this);
         setFocusable(true);
+        posCheck();
     }
 
     private void posCheck(){
         posTimer = new Timer(250, e-> {
             try{
-                //switch(){
+                //System.out.print(spriteX + ", " + spriteY);
+                switch(spriteX){
+                    case 400:
+                        if(spriteY == 250){
+
+                        }
 
                 }
-
+            }
             catch(Exception ge){
                 System.out.println("Error" +ge);
             }
@@ -75,19 +86,19 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
             int key = e.getKeyCode();
             switch (key) {
                 case KeyEvent.VK_W:
-                    spriteY -= 5;
+                    spriteY -= SPEED;
                     angle = 0;
                     break;
                 case KeyEvent.VK_A:
-                    spriteX -= 5;
+                    spriteX -= SPEED;
                     angle = -90;
                     break;
                 case KeyEvent.VK_S:
-                    spriteY += 5;
+                    spriteY += SPEED;
                     angle = 180;
                     break;
                 case KeyEvent.VK_D:
-                    spriteX += 5;
+                    spriteX += SPEED;
                     angle = 90;
                     break;
             }
