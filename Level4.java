@@ -12,12 +12,12 @@ public class Level4 extends JFrame implements ActionListener {
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv4dialogue.txt", 0, 600, 800, 200);
 
     // Images used
-    Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-1.PNG");
-    Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-2.PNG");
-    Image frame3 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-3.PNG");
-    Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-4.PNG");
-    Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-5.PNG");
-    Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Frame4-6.PNG");
+    Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final1.PNG");
+    Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final2.PNG");
+    Image frame3 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final3.PNG");
+    Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final4.PNG");
+    Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final5.PNG");
+    Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final6.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
     JButton errorbutton = new JButton();
@@ -52,23 +52,15 @@ public class Level4 extends JFrame implements ActionListener {
                 int currentIndex = reader.currentIndex;
                 System.out.println("Current Index: " + currentIndex); // Debug print
                 switch (currentIndex) {
-                    case 4:
-                        updateFrame(reader, frame2, 385, 240, 30, 30, 5);
-                        break;
-                    case 5:
-                        updateFrame(reader, frame3, 449, 351, 30, 30, 6);
-                        break;
-                    case 7:
-                        updateFrame(reader, frame4, 441, 237, 50, 50, 8);
-                        break;
-                    case 8:
-                        bg.setIcon(new ImageIcon(frame5));
-                        timer.stop();
-                        break;
-                    case 9:
-                        bg.setIcon(new ImageIcon(frame6));
-                        timer.stop();
-                        break;
+                    case 2: 
+                        bg.setIcon(new imageIcon(frame2)); 
+                    case 3: 
+                        bg.setIcon(new imageIcon(frame3)); 
+                    case 4: 
+                        bg.setIcon(new imageIcon(frame4)); 
+                    case 5: 
+                        bg.setIcon(new imageIcon(frame5)); 
+                        // syringe selection minigame here
                     default:
                         if (currentIndex < reader.lines.size()) {
                             reader.updateLabel(); // Ensure label updates even in default case
