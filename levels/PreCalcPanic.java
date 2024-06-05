@@ -13,9 +13,9 @@ public class PreCalcPanic {
     int currentIndex = 0; 
     boolean gameOver = false; 
 
-     new StartMenu(); // Create an instance of StartMenu
+    new StartMenu(); // Create an instance of StartMenu
 
-    //call level 1 here 
+    SwingUtilities.invokeLater(() -> new Level1());
 
     //call level 2 here 
 
