@@ -22,9 +22,12 @@ public class Level1 extends JFrame implements ActionListener {
     Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-2-3.png");
     Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-3.png");
     Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame2-1.png");
+    Image frame7 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame2-2.png");
 
     JLabel bg = new JLabel(); // Label to be used as background
     JButton errorbutton = new JButton();
+
+    String key = "3783";
 
     // Constructor
     public Level1() {
@@ -66,9 +69,32 @@ public class Level1 extends JFrame implements ActionListener {
                         bg.setIcon(new ImageIcon(frame5));
                         break;
                     case 9:
-                        bg.setIcon(new ImageIcon(frame6));
                         timer.stop();
+                        reader.setProgress(false);
+                        bg.setIcon(new ImageIcon(frame6));
+                        JTextField textfield = new JTextField();
+                        JButton submit = new JButton("Submit");
+
+                        textfield.setBounds(400, 400, 350, 200);
+                        submit.setBounds(300, 400, 100, 25);
+                        submit.addActionListener(p -> {
+                            // Check if the input contains the key
+                            String input = textfield.getText();
+                            if (input.contains(key)) {
+                                reader.setProgress(true);
+                                reader.currentIndex++;
+                                reader.updateLabel();
+                                remove(submit);
+                                remove(textfield);
+                                repaint();
+                                timer.start();
+                            }
+                        });
+                        add(submit);
+                        add(textfield);
                         break;
+                    case 10:
+                        bg.setIcon(new ImageIcon(frame7));
                     default:
                         break;
                 }
