@@ -2,7 +2,8 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 
-    public static void playBackgroundMusic(String filePath) {
+class playBackgroundMusic{
+    playBackgroundMusic(String filePath) {
         try {
             // Open an audio input stream
             File musicFile = new File(filePath);

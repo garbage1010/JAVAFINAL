@@ -11,9 +11,11 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\halldialogue.txt", 0, 560, 430, 200);
 
     Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Frame3-1redo.PNG");
+    Image  = Toolkit.getDefaultToolkit().getImage()
     Image sprite = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Sprite.PNG");
 
     Timer posTimer;
+    Timer timer;
     
     JLabel bg = new JLabel();
     int spriteX = 200;  // Initial X position of the sprite
@@ -38,27 +40,45 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
         addKeyListener(this);
         setFocusable(true);
         posCheck();
+        startPolling();
     }
 
     private void posCheck(){
         posTimer = new Timer(250, e-> {
             try{
-                //System.out.print(spriteX + ", " + spriteY);
-                switch(spriteX){
-                    case 400:
-                        if(spriteY == 250){
-
-                        }
-
+                System.out.println("Sprite Position: " + spriteX + ", " + spriteY); // Debug print
+                if (spriteX == 250 && spriteY == 400) {
+                    movementAllowed = false;
+                    posTimer.stop();
+                    reader.setProgress(false);
+                    System.out.println("Position reached, movement stopped."); // Debug print
                 }
             }
             catch(Exception ge){
-                System.out.println("Error" +ge);
+                System.out.println("Error: " + ge);
             }
         });
         posTimer.start();
     }
-    
+
+    private void startPolling(){
+        timer = new Timer(500, e-> {
+            try{
+                switch(reader.currentIndex){
+                    case 2:
+                        // Handle any specific actions needed for reader index 2
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch(Exception ge){
+                System.out.println("Error: " + ge);
+            }
+        });
+        timer.start();
+    }
+
     @Override
     public void paint(Graphics g) {
         super.paint(g);
@@ -72,12 +92,12 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        // Handle action events if necessary
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-
+        // Handle key typed events if necessary
     }
 
     @Override
@@ -108,6 +128,7 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+        // Handle key released events if necessary
     }
 
     public static void main(String[] args){

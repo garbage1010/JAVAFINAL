@@ -33,7 +33,7 @@ public class Level1 extends JFrame implements ActionListener {
     public Level1() {
         // Setup the main frame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800, 800);
+        setSize(800, 800);  
         setLayout(null);
         setVisible(true);
         setResizable(false);
@@ -48,6 +48,7 @@ public class Level1 extends JFrame implements ActionListener {
 
         // Start the timer
         startPolling();
+        
     }
 
     private void startPolling() {

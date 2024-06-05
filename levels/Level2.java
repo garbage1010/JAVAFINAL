@@ -1,6 +1,13 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class Level2 extends JFrame implements ActionListener {
@@ -23,7 +30,7 @@ public class Level2 extends JFrame implements ActionListener {
     JFrame scene = new JFrame(); // Main frame
 
     private int clicks = 0; // Declare clicks as a class variable to be accessible throughout the class
-    private Player player; // Player for the background music
+    //private Player player; // Player for the background music
 
     public Level2() {
         // Set background to frame size and set original icon
@@ -45,7 +52,7 @@ public class Level2 extends JFrame implements ActionListener {
         scene.add(reader.getButton());
         scene.add(bg);
         scene.add(cipher);
-
+    }
         // Start the background music
            public static void playBackgroundMusic(String filePath) {
         try {
@@ -70,7 +77,7 @@ public class Level2 extends JFrame implements ActionListener {
         }
     }
 }
-        playBackgroundMusic("levels\\images\\texts\\lvl2ambience.mp3");
+        playBackgroundMusic("levels\\images\\audio\\lvl2ambience.mp3");
 
         startPolling();
     }
@@ -147,7 +154,7 @@ public class Level2 extends JFrame implements ActionListener {
     }
 
     // Start the button mashing minigame
-    private void startMinigame() {
+    private void startMinigame(){
         // Create a timer to limit the time for the mini-game
         Timer bounds = new Timer(5000, new ActionListener() {
             @Override
