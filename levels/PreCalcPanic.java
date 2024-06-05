@@ -10,9 +10,6 @@ import java.awt.event.ActionEvent;
 public class PreCalcPanic {
   public static void main(String[] args) {
 
-    int currentIndex = 0; 
-    boolean gameOver = false; 
-
     new StartMenu(); // Create an instance of StartMenu
 
     SwingUtilities.invokeLater(() -> new Level1());
