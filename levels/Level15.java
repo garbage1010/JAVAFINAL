@@ -10,9 +10,12 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
     public int currentIndex; // Index to keep track of the current line
     public boolean allowprogress = false;
     private JButton textButton; // Button to display text
+    private JButton advanceButton; // Button to advance dialog at specific points
+    private JButton q1Button;
 
     Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Frame3-1redo.PNG");
     Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Frame3-2redo.PNG");
+    Image q1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\q1.png");
     Image sprite = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Sprite.PNG");
 
     Timer posTimer;
@@ -48,6 +51,28 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
         textButton.addKeyListener(this);
         add(textButton);
         textButton.requestFocusInWindow(); // Request focus for the button
+
+        // Initialize advance button
+        advanceButton = new JButton("Next");
+        advanceButton.setBounds(150, 300, 130, 50);
+        advanceButton.setFont(new Font("Agency FB", Font.PLAIN, 20));
+        advanceButton.setForeground(Color.WHITE);
+        advanceButton.setBackground(Color.BLACK);
+        advanceButton.setFocusPainted(false);
+        advanceButton.setFocusable(false);
+        advanceButton.setVisible(false); // Initially invisible
+        advanceButton.addActionListener(this);
+        add(advanceButton); // Ensure the button is added to the frame
+
+        q1Button = new JButton(new ImageIcon(q1));
+        q1Button.setBounds(160, 335, 110, 120);
+        q1Button.setVisible(false);
+        q1Button.addActionListener(u -> {
+            currentIndex++;
+            updateLabel();
+            remove(q1Button);
+        });
+        add(q1Button); // Ensure the button is added to the frame
 
         lines = new ArrayList<>(); // Initialize ArrayList to store lines
         currentIndex = 0; // Initialize index to 0
@@ -88,11 +113,21 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
         posTimer = new Timer(250, e -> {
             try {
                 System.out.println("Sprite Position: " + spriteX + ", " + spriteY); // Debug print
-                if (Math.abs(spriteX - 250) <= 50 && Math.abs(spriteY - 400) <= 50) {
+                if (currentIndex == 0 && Math.abs(spriteX - 250) <= 50 && Math.abs(spriteY - 400) <= 50) {
                     movementAllowed = false;
-                    posTimer.stop();
                     allowprogress = true;
                     System.out.println("Position reached, movement stopped."); // Debug print
+                    updateLabel();
+                }
+                if(currentIndex == 1);{
+                    //bg.setIcon(new ImageIcon(q1));
+                    q1Button.setVisible(true);
+                }
+                if (currentIndex == 5 && Math.abs(spriteX - 300) <= 50 && Math.abs(spriteY - 300) <= 50) {
+                    allowprogress = true;
+                    movementAllowed = false;
+                    remove(advanceButton); // Remove the advance button from the frame
+                    System.out.println("Final position reached, movement stopped."); // Debug print
                     updateLabel();
                 }
             } catch (Exception ge) {
@@ -115,7 +150,18 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // Handle action events if necessary
+        if (e.getSource() == advanceButton) {
+            currentIndex++;
+            updateLabel();
+            allowprogress = true;
+            remove(advanceButton); // Remove the advance button from the frame
+            movementAllowed = true;
+            if (currentIndex == 5) {
+                movementAllowed = false;
+                allowprogress = false;
+            }
+            repaint();
+        }
     }
 
     @Override
@@ -146,11 +192,30 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
                     break;
             }
             repaint();
-        } else if (e.getKeyCode() == KeyEvent.VK_ENTER && allowprogress) {
-            System.out.println("Enter key pressed. Current index: " + currentIndex); // Debug print
-            currentIndex++; // Move to the next line
-            updateLabel(); // Update the button with the new line
-            System.out.println("Index after pressing Enter: " + currentIndex); // Debug print
+        }
+        if (e.getKeyCode() == KeyEvent.VK_ENTER && allowprogress) {
+            if (currentIndex == 0) {
+                currentIndex++;
+                updateLabel();
+                allowprogress = false;
+                movementAllowed = true;
+            } else if (currentIndex == 1) {
+                allowprogress = false;
+                movementAllowed = false;
+            } else if (currentIndex == 2) {
+                allowprogress = false;
+                movementAllowed = true;
+            } else if (currentIndex == 4) {
+                allowprogress = false;
+                bg.setIcon(new ImageIcon(frame1));
+                movementAllowed = true;
+            } else if (currentIndex == 5) {
+                allowprogress = false;
+                movementAllowed = false;
+            } else {
+                currentIndex++;
+                updateLabel();
+            }
         }
     }
 
