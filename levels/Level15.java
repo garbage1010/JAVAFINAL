@@ -17,6 +17,7 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
     Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Frame3-2redo.PNG");
     Image q1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\q1.png");
     Image sprite = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Sprite.PNG");
+    Image blondegone = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Frame3-4redo.PNG");
 
     Timer posTimer;
 
@@ -62,7 +63,7 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
         advanceButton.setFocusable(false);
         advanceButton.setVisible(false); // Initially invisible
         advanceButton.addActionListener(this);
-        add(advanceButton); // Ensure the button is added to the frame
+        //add(advanceButton); // Ensure the button is added to the frame
 
         q1Button = new JButton(new ImageIcon(q1));
         q1Button.setBounds(160, 335, 110, 120);
@@ -70,6 +71,7 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
         q1Button.addActionListener(u -> {
             currentIndex++;
             updateLabel();
+            allowprogress = true;
             remove(q1Button);
         });
         add(q1Button); // Ensure the button is added to the frame
@@ -82,7 +84,7 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
         lines.add("Okay. Let me see.");
         lines.add("Thanks!");
         lines.add("No shame in asking for help.");
-        lines.add("Mr. Landa! Mr. Landa!");
+        lines.add("They asked me to go to the server room, better check it out.");
         lines.add("What?");
         lines.add("My program keeps saying “SyntaxError: missing curly bracket”. Can you fix it?");
         lines.add("THIS is why I tell you to comment them. THIS.");
@@ -119,12 +121,17 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
                     System.out.println("Position reached, movement stopped."); // Debug print
                     updateLabel();
                 }
-                if(currentIndex == 1);{
-                    //bg.setIcon(new ImageIcon(q1));
+                if(currentIndex == 1){
+                    bg.setIcon(new ImageIcon(q1));
+                    //add(q1);
                     q1Button.setVisible(true);
                 }
-                if (currentIndex == 5 && Math.abs(spriteX - 300) <= 50 && Math.abs(spriteY - 300) <= 50) {
+                if(currentIndex == 2){
+                    bg.setIcon(new ImageIcon(blondegone));
                     allowprogress = true;
+                }
+                if (currentIndex == 4 && Math.abs(spriteX - 300) <= 50 && Math.abs(spriteY - 300) <= 50) {
+                    allowprogress = false;
                     movementAllowed = false;
                     remove(advanceButton); // Remove the advance button from the frame
                     System.out.println("Final position reached, movement stopped."); // Debug print
@@ -203,11 +210,17 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
                 allowprogress = false;
                 movementAllowed = false;
             } else if (currentIndex == 2) {
-                allowprogress = false;
+                //allowprogress = false;
                 movementAllowed = true;
-            } else if (currentIndex == 4) {
+                currentIndex++;
+                updateLabel();
+            } else if (currentIndex == 3){
+                currentIndex++;
+                updateLabel();
                 allowprogress = false;
-                bg.setIcon(new ImageIcon(frame1));
+            } else if (currentIndex == 4) {
+
+                allowprogress = false;
                 movementAllowed = true;
             } else if (currentIndex == 5) {
                 allowprogress = false;
