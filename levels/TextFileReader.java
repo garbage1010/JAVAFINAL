@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.*;
+
 class TextFileReader implements KeyListener {
     ArrayList<String> lines; // ArrayList to store lines from the text file
     public int currentIndex; // Index to keep track of the current line
@@ -30,7 +31,9 @@ class TextFileReader implements KeyListener {
             // Read the file
             while (in.hasNextLine()) {
                 // Add the line to lines ArrayList
-                lines.add(in.nextLine());
+                String line = in.nextLine();
+                lines.add(line);
+                System.out.println("Read line: " + line); // Debug print
             }
 
             // Update the button with the first line
@@ -47,7 +50,8 @@ class TextFileReader implements KeyListener {
         System.out.println("Updating label. Current index: " + currentIndex); // Debug print
         if (currentIndex < lines.size()) {
             text.setText(lines.get(currentIndex)); // Set text of the button to the current line
-        } else {
+        } 
+        else {
             text.setText("End of file"); // Display message when the end of the file is reached
         }
         System.out.println("Label updated to: " + text.getText()); // Debug print

@@ -11,7 +11,7 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\halldialogue.txt", 0, 560, 430, 200);
 
     Image frame1 = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Frame3-1redo.PNG");
-    Image  = Toolkit.getDefaultToolkit().getImage()
+    Image frame2 = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Frame3-2redo.PNG");
     Image sprite = Toolkit.getDefaultToolkit().getImage("levels\\images\\15\\Sprite.PNG");
 
     Timer posTimer;
@@ -46,8 +46,8 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
     private void posCheck(){
         posTimer = new Timer(250, e-> {
             try{
-                System.out.println("Sprite Position: " + spriteX + ", " + spriteY); // Debug print
-                if (spriteX == 250 && spriteY == 400) {
+                //System.out.println("Sprite Position: " + spriteX + ", " + spriteY); // Debug print
+                if (Math.abs(spriteX - 250) <= 50 && Math.abs(spriteY - 400) <= 50) {
                     movementAllowed = false;
                     posTimer.stop();
                     reader.setProgress(false);
