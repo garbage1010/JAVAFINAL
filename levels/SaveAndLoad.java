@@ -10,16 +10,6 @@ public class SaveAndLoad {
 
     public static void main(String[] args) {
 
-        // Create Save button
-        JButton saveButton = new JButton("Save Level");
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                saveLevel();
-            }
-        });
-        panel.add(saveButton);
-
         // Create Load button
         JButton loadButton = new JButton("Load Level");
         loadButton.addActionListener(new ActionListener() {
