@@ -31,6 +31,7 @@ public class Level4 extends JFrame implements ActionListener {
     Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final6.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
+    new FadeOutOverlay(bg); 
 <<<<<<< Updated upstream
     JButton selectSyringe;
     JButton errorbutton = new JButton(); // Assuming this button is needed
