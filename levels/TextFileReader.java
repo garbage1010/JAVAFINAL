@@ -50,8 +50,7 @@ class TextFileReader implements KeyListener {
         System.out.println("Updating label. Current index: " + currentIndex); // Debug print
         if (currentIndex < lines.size()) {
             text.setText(lines.get(currentIndex)); // Set text of the button to the current line
-        } 
-        else {
+        } else {
             text.setText("End of file"); // Display message when the end of the file is reached
         }
         System.out.println("Label updated to: " + text.getText()); // Debug print
