@@ -21,7 +21,7 @@ public class PreCalcPanic {
 
     SwingUtilities.invokeLater(() -> new Level2());
 
-    //call level 3 here 
+    SwingUtilities.invokeLater(() -> new Level3());
 
     //add code to save progress here
 
