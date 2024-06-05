@@ -1,9 +1,20 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+<<<<<<< Updated upstream
 import javax.sound.sampled.*;
+=======
+import java.io.FileInputStream;
+import java.io.IOException;
+
+>>>>>>> Stashed changes
 
 public class Level4 extends JFrame implements ActionListener {
 
@@ -20,9 +31,15 @@ public class Level4 extends JFrame implements ActionListener {
     Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final6.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
+<<<<<<< Updated upstream
     JButton selectSyringe;
     JButton errorbutton = new JButton(); // Assuming this button is needed
     String filePath = "levels\\images\\texts\\lvl4ambience.wav";
+=======
+    String filePath = "lvl4ambience.wav";
+
+   
+>>>>>>> Stashed changes
 
     // Constructor
     public Level4() {
@@ -42,11 +59,17 @@ public class Level4 extends JFrame implements ActionListener {
         add(reader.getButton());
 
         // Start the background music
+<<<<<<< Updated upstream
         playBackgroundMusic(filePath);
+=======
+        // Start the background music
+        new playBackgroundMusic(filePath);
+>>>>>>> Stashed changes
 
         // Start the timer
         startPolling();
     }
+<<<<<<< Updated upstream
 
     public static void playBackgroundMusic(String filePath) {
         try {
@@ -70,6 +93,8 @@ public class Level4 extends JFrame implements ActionListener {
             e.printStackTrace();
         }
     }
+=======
+>>>>>>> Stashed changes
 
     private void startPolling() {
         timer = new Timer(500, e -> {
@@ -119,6 +144,7 @@ public class Level4 extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         // Handle button actions if necessary
     }
+    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new Level4());
