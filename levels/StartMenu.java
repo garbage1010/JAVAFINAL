@@ -28,8 +28,13 @@ public class StartMenu extends JFrame implements ActionListener {
         load.setBounds(150, 325, 500, 50); // Setting position and size
         load.setText("Load Game"); // Setting text
         load.setFocusable(false); // Making it non-focusable
-        load.addActionListener(e -> System.out.println("LOAD GAME!!!")); // Adding action listener to print a message when clicked
-
+        load.addActionListener(new ActionListener(){ 
+        public void actionPerformed(ActionEvent e) {
+            currentLevel = LoadThat.loadLevel();
+            System.out.println("Game loaded."); 
+         }
+        }); 
+    
         // Create Frame
         JFrame menu = new JFrame(); // Initializing frame
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Setting default close operation
