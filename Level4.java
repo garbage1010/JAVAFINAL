@@ -3,8 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.FileInputStream;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
 
 public class Level4 extends JFrame implements ActionListener {
 
@@ -21,8 +19,9 @@ public class Level4 extends JFrame implements ActionListener {
     Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final6.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
-    JButton errorbutton = new JButton();
-    private Player player; // Player for the background music
+    String filePath = "lvl4ambience.wav";
+    play(filePath);
+   
 
     // Constructor
     public Level4() {
@@ -52,15 +51,23 @@ public class Level4 extends JFrame implements ActionListener {
     }
 
     private void startBackgroundMusic(String filepath) {
-        new Thread(() -> {
-            try {
-                FileInputStream fis = new FileInputStream(filepath);
-                player = new Player(fis);
-                player.play();
-            } catch (JavaLayerException | java.io.IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(WavPlayer.class.getResourceAsStream(filePath));
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+
+            clip.addLineListener(event -> {
+                if (event.getType() == LineEvent.Type.STOP) {
+                    clip.setMicrosecondPosition(0); // Reset position to the beginning
+                    clip.start(); // Restart playback
+                }
+            });
+
+            clip.start();
+            Thread.sleep(Long.MAX_VALUE); // Keep the thread alive to allow continuous playback
+        } catch (Exception e) {
+            System.err.println("Error playing sound: " + e.getMessage());
+        }
     }
 
     private void startPolling() {
