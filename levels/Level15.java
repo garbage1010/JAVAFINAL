@@ -27,7 +27,7 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
 
     public Level15() {
         // Setup frame
-        bg.setIcon(new ImageIcon(frame1));
+        bg.setIcon(new ImageIcon(frame2));
         bg.setBounds(0, 0, 430, 560);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
