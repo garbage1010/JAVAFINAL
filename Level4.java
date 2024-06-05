@@ -3,8 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.FileInputStream;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
 
 public class Level4 extends JFrame implements ActionListener {
 
@@ -21,8 +19,9 @@ public class Level4 extends JFrame implements ActionListener {
     Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final6.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
-    JButton errorbutton = new JButton();
-    private Player player; // Player for the background music
+    String filePath = "lvl4ambience.wav";
+    play(filePath);
+   
 
     // Constructor
     public Level4() {
@@ -45,22 +44,37 @@ public class Level4 extends JFrame implements ActionListener {
         add(reader.getButton());
 
         // Start the background music
-        startBackgroundMusic("levels\\images\\texts\\lvl4ambience.mp3");
+        // Start the background music
+           public static void playBackgroundMusic(String filePath) {
+        try {
+            // Open an audio input stream
+            File musicFile = new File(filePath);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
+
+            // Get a sound clip resource
+            Clip clip = AudioSystem.getClip();
+
+            // Open audio clip and load samples from the audio input stream
+            clip.open(audioStream);
+
+            // Start the clip in a loop
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+            // Start playing the music
+            clip.start();
+
+            // Keep the program running to play the music
+            Thread.sleep(clip.getMicrosecondLength() / 1000);
+
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+}
+        playBackgroundMusic("levels\\images\\texts\\lvl4ambience.wav");
 
         // Start the timer
         startPolling();
-    }
-
-    private void startBackgroundMusic(String filepath) {
-        new Thread(() -> {
-            try {
-                FileInputStream fis = new FileInputStream(filepath);
-                player = new Player(fis);
-                player.play();
-            } catch (JavaLayerException | java.io.IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
     }
 
     private void startPolling() {
