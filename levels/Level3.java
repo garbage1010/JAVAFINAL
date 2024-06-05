@@ -4,15 +4,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+import javax.sound.sampled.*;
 
 public class Level3 extends JFrame implements ActionListener {
 
     Timer timer;
-
     public boolean isvisible = true;
 
+    // Assuming TextFileReader is a custom class you have defined elsewhere
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv3dialogue.txt", 0, 600, 800, 200);
 
     // Images used
@@ -52,19 +51,19 @@ public class Level3 extends JFrame implements ActionListener {
                 int currentIndex = reader.currentIndex;
                 System.out.println("Current Index: " + currentIndex); // Debug print
                 switch (currentIndex) {
-                    case 2: 
-                        bg.setIcon(frame2); 
-                        break; 
-                    case 3: 
-                        bg.setIcon(frame3); 
-                        break; 
-                    case 4: 
-                        bg.setIcon(frame4); 
-                        break; 
-                    case 5: 
-                        bg.setIcon(frame5); 
-                        launchTimingGame(); 
-                        break; 
+                    case 2:
+                        bg.setIcon(new ImageIcon(frame2));
+                        break;
+                    case 3:
+                        bg.setIcon(new ImageIcon(frame3));
+                        break;
+                    case 4:
+                        bg.setIcon(new ImageIcon(frame4));
+                        break;
+                    case 5:
+                        bg.setIcon(new ImageIcon(frame5));
+                        launchTimingGame();
+                        break;
                     default:
                         if (currentIndex < reader.lines.size()) {
                             reader.updateLabel(); // Ensure label updates even in default case
@@ -79,13 +78,15 @@ public class Level3 extends JFrame implements ActionListener {
         timer.start();
     }
 
-     private void launchTimingGame() {
+    private void launchTimingGame() {
         // Stop the current timer
         timer.stop();
         // Create and display the TimingGame button
         SwingUtilities.invokeLater(() -> {
             TimingGame timingGame = new TimingGame();
+            timingGame.setVisible(true);
         });
+    }
 
     private void updateFrame(TextFileReader reader, Image frame, int x, int y, int width, int height, int nextIndex) {
         System.out.println("Updating frame for index: " + reader.currentIndex); // Debug print
