@@ -7,9 +7,9 @@ public class SaveThat {
     public static void saveLevel(int currentLevel) {
         try (PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(FILE_NAME)))) {
             out.println(currentLevel);
-            JOptionPane.showMessageDialog(null, "Level saved successfully!");
+            System.out.println("level saved successfully."); 
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error saving level: " + e.getMessage());
+            System.out.println(null, "Error saving level: " + e.getMessage());
         }
     }
 }
