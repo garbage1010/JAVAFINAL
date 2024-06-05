@@ -3,8 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.FileInputStream;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
+import javax.sound.sampled.*; 
 
 public class Level2 extends JFrame implements ActionListener {
     int framecounter = 1; // What frame are we on
