@@ -13,7 +13,7 @@ public class PreCalcPanic {
     int currentIndex = 0; 
     boolean gameOver = false; 
 
-    //call title screen code here 
+     new StartMenu(); // Create an instance of StartMenu
 
     //call level 1 here 
 
