@@ -2,8 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.FileInputStream;
-import javax.sound.sampled.*; 
 
 public class Level2 extends JFrame implements ActionListener {
     int framecounter = 1; // What frame are we on
@@ -49,23 +47,11 @@ public class Level2 extends JFrame implements ActionListener {
         scene.add(cipher);
 
         // Start the background music
-        startBackgroundMusic("levels\\images\\texts\\lvl2ambience.mp3");
+        playBackgroundMusic("levels\\images\\texts\\lvl2ambience.mp3");
 
         startPolling();
     }
 
-    // Start background music
-    private void startBackgroundMusic(String filepath) {
-        new Thread(() -> {
-            try {
-                FileInputStream fis = new FileInputStream(filepath);
-                player = new Player(fis);
-                player.play();
-            } catch (JavaLayerException | java.io.IOException e) {
-                e.printStackTrace();
-            }
-        }).start();
-    }
 
     // Start polling to handle frame changes
     private void startPolling() {
