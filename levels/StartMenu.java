@@ -47,33 +47,6 @@ public class StartMenu extends JFrame implements ActionListener {
         menu.add(start); // Adding start button to the frame
         menu.add(load); // Adding load button to the frame
 
-        // Black Overlay Panel
-        blackOverlay = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                g.setColor(new Color(0, 0, 0, (int)(opacity * 255)));
-                g.fillRect(0, 0, getWidth(), getHeight());
-            }
-        };
-        blackOverlay.setBounds(0, 0, 800, 600); // Cover the entire frame
-        menu.add(blackOverlay);
-
-        // Fade-in Timer
-        Timer fadeInTimer = new Timer(50, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                opacity -= 0.05f; // Decrease opacity
-                if (opacity <= 0) {
-                    opacity = 0;
-                    ((Timer)e.getSource()).stop(); // Stop timer when fully transparent
-                }
-                blackOverlay.repaint(); // Repaint overlay with new opacity
-            }
-        });
-        fadeInTimer.start(); // Start the fade-in effect
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
     }
