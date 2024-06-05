@@ -3,15 +3,14 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class FadeOutOverlayPanel extends JPanel {
+public class FadeOutOverlay extends JLabel {
     private float opacity;
     private Timer fadeInTimer;
-    private JComponent parent;
 
-    public FadeOutOverlayPanel(JComponent parent) {
+    public FadeOutOverlayLabel(JLabel label) {
         this.opacity = 1.0f;
-        this.parent = parent;
-        setBounds(0, 0, parent.getWidth(), parent.getHeight());
+        setBounds(0, 0, label.getWidth(), label.getHeight());
+        setOpaque(false);
 
         fadeInTimer = new Timer(50, new ActionListener() {
             @Override
@@ -20,14 +19,18 @@ public class FadeOutOverlayPanel extends JPanel {
                 if (opacity <= 0) {
                     opacity = 0;
                     fadeInTimer.stop(); // Stop timer when fully transparent
-                    parent.remove(FadeOutOverlayPanel.this); // Remove the overlay from the parent container
-                    parent.revalidate(); // Revalidate the parent container
-                    parent.repaint(); // Repaint the parent container to reflect changes
+                    Container parent = getParent();
+                    if (parent != null) {
+                        parent.remove(FadeOutOverlayLabel.this); // Remove the overlay from the parent container
+                        parent.revalidate(); // Revalidate the parent container
+                        parent.repaint(); // Repaint the parent container to reflect changes
+                    }
                 }
                 repaint(); // Repaint overlay with new opacity
             }
         });
-        parent.add(this); // Add the overlay to the parent container
+
+        label.add(this); // Add the overlay to the label's parent container
         fadeInTimer.start(); // Start the fade-in effect
     }
 
@@ -44,13 +47,14 @@ public class FadeOutOverlayPanel extends JPanel {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
 
-        JPanel menu = new JPanel();
-        menu.setBounds(0, 0, 800, 600);
-        menu.setLayout(null);
-        frame.add(menu);
+        JLabel label = new JLabel("Hello, World!");
+        label.setBounds(0, 0, 800, 600);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+        frame.add(label);
 
         frame.setVisible(true);
 
-        new FadeOutOverlayPanel(menu);
+        new FadeOutOverlayLabel(label);
     }
 }
