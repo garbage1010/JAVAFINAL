@@ -63,9 +63,6 @@ public class Level4 extends JFrame implements ActionListener {
             // Start playing the music
             clip.start();
 
-            // Keep the program running to play the music
-            Thread.sleep(clip.getMicrosecondLength() / 1000);
-
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
             e.printStackTrace();
         }
