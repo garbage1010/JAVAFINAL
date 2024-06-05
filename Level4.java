@@ -71,7 +71,7 @@ public class Level4 extends JFrame implements ActionListener {
         }
     }
 }
-        playBackgroundMusic("levels\\images\\texts\\lvl4ambience.mp3");
+        playBackgroundMusic("levels\\images\\texts\\lvl4ambience.wav");
 
         // Start the timer
         startPolling();
