@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 public class PreCalcPanic {
   public static void main(String[] args) {
 
-  
+    new StartMenu(); // Create an instance of StartMenu
     
     private void startPolling() {
     Timer timer = new Timer(500, e -> {
