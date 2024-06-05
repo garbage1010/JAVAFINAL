@@ -76,9 +76,6 @@ public class StartMenu extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == load) {
-            // Load game action
-        }
     }
 
     public static void main(String[] args) {
