@@ -2,7 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.FileInputStream;
+import java.io.File;
+import javax.sound.sampled.*;
 
 public class Level4 extends JFrame implements ActionListener {
 
@@ -19,9 +20,9 @@ public class Level4 extends JFrame implements ActionListener {
     Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final6.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
-    String filePath = "lvl4ambience.wav";
-    play(filePath);
-   
+    JButton selectSyringe;
+    JButton errorbutton = new JButton(); // Assuming this button is needed
+    String filePath = "levels\\images\\texts\\lvl4ambience.wav";
 
     // Constructor
     public Level4() {
@@ -32,9 +33,6 @@ public class Level4 extends JFrame implements ActionListener {
         setVisible(true);
         setResizable(false);
 
-        // Load game state
-        // loadGameState(); // Commented out as the method is not defined
-
         // Setup background label
         bg.setBounds(0, 0, 800, 600);
         bg.setIcon(new ImageIcon(frame1));
@@ -44,8 +42,13 @@ public class Level4 extends JFrame implements ActionListener {
         add(reader.getButton());
 
         // Start the background music
-        // Start the background music
-           public static void playBackgroundMusic(String filePath) {
+        playBackgroundMusic(filePath);
+
+        // Start the timer
+        startPolling();
+    }
+
+    public static void playBackgroundMusic(String filePath) {
         try {
             // Open an audio input stream
             File musicFile = new File(filePath);
@@ -63,15 +66,9 @@ public class Level4 extends JFrame implements ActionListener {
             // Start playing the music
             clip.start();
 
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
             e.printStackTrace();
         }
-    }
-}
-        playBackgroundMusic("levels\\images\\texts\\lvl4ambience.wav");
-
-        // Start the timer
-        startPolling();
     }
 
     private void startPolling() {
@@ -80,21 +77,22 @@ public class Level4 extends JFrame implements ActionListener {
                 int currentIndex = reader.currentIndex;
                 System.out.println("Current Index: " + currentIndex); // Debug print
                 switch (currentIndex) {
-                    case 2: 
-                        bg.setIcon(new ImageIcon(frame2)); 
-                        break; 
-                    case 3: 
-                        bg.setIcon(new ImageIcon(frame3)); 
-                        break; 
-                    case 4: 
-                        bg.setIcon(new ImageIcon(frame4)); 
+                    case 2:
+                        bg.setIcon(new ImageIcon(frame2));
                         break;
-                    case 5: 
-                        bg.setIcon(new ImageIcon(frame5)); 
+                    case 3:
+                        bg.setIcon(new ImageIcon(frame3));
+                        break;
+                    case 4:
+                        bg.setIcon(new ImageIcon(frame4));
+                        break;
+                    case 5:
+                        bg.setIcon(new ImageIcon(frame5));
                         selectSyringe = new JButton();
                         selectSyringe.setFocusable(false);
-                        selectSyringe.setBounds(placeholder);
+                        selectSyringe.setBounds(100, 100, 100, 50); // Placeholder bounds
                         selectSyringe.setOpaque(false);
+                        add(selectSyringe);
                         break;
                     default:
                         if (currentIndex < reader.lines.size()) {
@@ -126,4 +124,3 @@ public class Level4 extends JFrame implements ActionListener {
         SwingUtilities.invokeLater(() -> new Level4());
     }
 }
-
