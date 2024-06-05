@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 public class PreCalcPanic {
   public static void main(String[] args) {
 
+    int currentLevel = 0; 
+
     new StartMenu(); // Create an instance of StartMenu
     
     private void startPolling() {
