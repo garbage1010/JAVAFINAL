@@ -20,6 +20,7 @@ public class Level3 extends JFrame implements ActionListener {
     Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame7-3.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
+    new FadeOutOverlayPanel(bg); // Add a fade-in 
 
     // Constructor
     public Level3() {
