@@ -48,12 +48,12 @@ public class SaveAndLoad {
             String line = in.readLine();
             if (line != null) {
                 currentLevel = Integer.parseInt(line);
-                JOptionPane.showMessageDialog(null, "Level loaded successfully! Current Level: " + currentLevel);
+                System.out.println(null, "Level loaded successfully! Current Level: " + currentLevel);
             } else {
-                JOptionPane.showMessageDialog(null, "No level data found.");
+                System.out.println(null, "No level data found.");
             }
         } catch (IOException | NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Error loading level: " + e.getMessage());
+            System.out.println(null, "Error loading level: " + e.getMessage());
         }
     }
 }
