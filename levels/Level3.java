@@ -2,13 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.File;
-import java.io.IOException;
-import javax.sound.sampled.*;
 
 public class Level3 extends JFrame implements ActionListener {
 
     Timer timer;
+
     public boolean isvisible = true;
 
     // Assuming TextFileReader is a custom class you have defined elsewhere
@@ -22,7 +20,6 @@ public class Level3 extends JFrame implements ActionListener {
     Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame7-3.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
-    JButton errorbutton = new JButton();
 
     // Constructor
     public Level3() {
@@ -88,23 +85,6 @@ public class Level3 extends JFrame implements ActionListener {
         });
     }
 
-    private void updateFrame(TextFileReader reader, Image frame, int x, int y, int width, int height, int nextIndex) {
-        System.out.println("Updating frame for index: " + reader.currentIndex); // Debug print
-        timer.stop();
-        reader.setProgress(false);
-        bg.setIcon(new ImageIcon(frame));
-        add(errorbutton);
-        errorbutton.setBounds(x, y, width, height);
-        errorbutton.addActionListener(l -> {
-            System.out.println("Error button pressed for next index: " + nextIndex); // Debug print
-            reader.setProgress(true);
-            reader.currentIndex = nextIndex;
-            reader.updateLabel();
-            remove(errorbutton);
-            timer.start();
-        });
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         // Handle button actions if necessary
@@ -114,3 +94,4 @@ public class Level3 extends JFrame implements ActionListener {
         SwingUtilities.invokeLater(() -> new Level3());
     }
 }
+
