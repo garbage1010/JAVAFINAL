@@ -23,9 +23,7 @@ public class PreCalcPanic {
 
     SwingUtilities.invokeLater(() -> new Level3());
 
-    //add code to save progress here
-
-    //initiate game over if gameOver is true 
+    SwingUtilities.invokeLater(() -> new Level4());
     
   }
 }
