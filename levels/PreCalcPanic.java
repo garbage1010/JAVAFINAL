@@ -17,7 +17,9 @@ public class PreCalcPanic {
 
     SwingUtilities.invokeLater(() -> new Level1());
 
-     SwingUtilities.invokeLater(() -> new Level2());
+    new Level15();
+
+    SwingUtilities.invokeLater(() -> new Level2());
 
     //call level 3 here 
 
