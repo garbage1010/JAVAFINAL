@@ -21,7 +21,7 @@ public class Level1 extends JFrame implements ActionListener {
     Image frame3 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-2-2.PNG");
     Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-2-3.png");
     Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-3.png");
-    Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame1-4.png");
+    Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\1\\Frame2-1.png");
 
     JLabel bg = new JLabel(); // Label to be used as background
     JButton errorbutton = new JButton();
@@ -64,14 +64,12 @@ public class Level1 extends JFrame implements ActionListener {
                         break;
                     case 8:
                         bg.setIcon(new ImageIcon(frame5));
-                        timer.stop();
                         break;
                     case 9:
                         bg.setIcon(new ImageIcon(frame6));
                         timer.stop();
                         break;
                     default:
-
                         break;
                 }
             } catch (Exception er) {
@@ -88,6 +86,7 @@ public class Level1 extends JFrame implements ActionListener {
         bg.setIcon(new ImageIcon(frame));
         add(errorbutton);
         errorbutton.setBounds(x, y, width, height);
+        removeAllActionListeners(errorbutton);
         errorbutton.addActionListener(l -> {
             System.out.println("Error button pressed for next index: " + nextIndex); // Debug print
             reader.setProgress(true);
@@ -96,6 +95,12 @@ public class Level1 extends JFrame implements ActionListener {
             remove(errorbutton);
             timer.start();
         });
+    }
+
+    private void removeAllActionListeners(JButton button) {
+        for (ActionListener al : button.getActionListeners()) {
+            button.removeActionListener(al);
+        }
     }
 
     @Override
