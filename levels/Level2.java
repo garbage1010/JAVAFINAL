@@ -26,6 +26,7 @@ public class Level2 extends JFrame implements ActionListener {
     Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\2\\Frame5-2.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
+    new FadeOutOverlayPanel(bg); // Add a fade-in 
     JButton cipher; // Cipher on the first frame in the shelf
     JFrame scene = new JFrame(); // Main frame
 
