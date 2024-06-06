@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingUtilities;
 
 public class Level2 extends JFrame implements ActionListener {
     int framecounter = 1; // What frame are we on
@@ -26,7 +27,7 @@ public class Level2 extends JFrame implements ActionListener {
     Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\2\\Frame5-2.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
-    new FadeOutOverlay(bg); // Add a fade-in 
+    //new FadeOutOverlay(bg); // Add a fade-in 
     JButton cipher; // Cipher on the first frame in the shelf
     JFrame scene = new JFrame(); // Main frame
 
@@ -53,35 +54,13 @@ public class Level2 extends JFrame implements ActionListener {
         scene.add(reader.getButton());
         scene.add(bg);
         scene.add(cipher);
-    }
         // Start the background music
-           public static void playBackgroundMusic(String filePath) {
-        try {
-            // Open an audio input stream
-            File musicFile = new File(filePath);
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
-
-            // Get a sound clip resource
-            Clip clip = AudioSystem.getClip();
-
-            // Open audio clip and load samples from the audio input stream
-            clip.open(audioStream);
-
-            // Start the clip in a loop
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-
-            // Start playing the music
-            clip.start();
-
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-}
+           
         playBackgroundMusic("levels\\images\\audio\\lvl2ambience.mp3");
 
         startPolling();
     }
+
 
 
     // Start polling to handle frame changes
@@ -127,7 +106,7 @@ public class Level2 extends JFrame implements ActionListener {
                         reader.setProgress(false);
                         bg.setIcon(new ImageIcon(frame4)); // Update background image
                         JButton window = new JButton();
-                        window.setBounds(0, 0, 100, 100);
+                        window.setBounds(0, 0, 200, 200);
                         window.addActionListener(o -> {
                             reader.setProgress(true);
                             reader.currentIndex++;
@@ -202,8 +181,33 @@ public class Level2 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
     }
+    public static void playBackgroundMusic(String filePath) {
+        try {//open try
+            // Open an audio input stream
+            File musicFile = new File(filePath);
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Level2());
+            // Get a sound clip resource
+            Clip clip = AudioSystem.getClip();
+
+            // Open audio clip and load samples from the audio input stream
+            clip.open(audioStream);
+
+            // Start the clip in a loop
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+
+            // Start playing the music
+            clip.start();
+
+        }//close try 
+        catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
     }
+
+
+    public static void main(String[] args) {//open main
+        //SwingUtilities.invokeLater(() -> 
+        new Level2();
+    }//close main
 }

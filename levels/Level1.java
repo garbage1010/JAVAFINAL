@@ -96,6 +96,11 @@ public class Level1 extends JFrame implements ActionListener {
                         break;
                     case 10:
                         bg.setIcon(new ImageIcon(frame7));
+                    case 11:
+                        PreCalcPanic.increment();
+                        SaveThat.saveLevel(0);
+                        PreCalcPanic.timerChange();
+                        dispose();
                     default:
                         break;
                 }
