@@ -63,7 +63,7 @@ public class Level3 extends JFrame implements ActionListener {
                         launchTimingGame();
                         PreCalcPanic.increment();
                         SaveThat.saveLevel(4);
-                        System.exit(0);
+                        return; 
                     default:
                         if (currentIndex < reader.lines.size()) {
                             reader.updateLabel(); // Ensure label updates even in default case
