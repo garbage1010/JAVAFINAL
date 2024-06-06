@@ -11,36 +11,53 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 
 public class PreCalcPanic {
-    public static int currentLevel = 0;
-    public static Timer timer;
+    private static Timer timer;
+    private static int currentLevel = 1;
 
-    public static void main(String[] args) {
-        startPolling();
-        new StartMenu(); // Create an instance of StartMenu
-    }
-
-    private static void startPolling() {
+    public static void startPolling() {
         timer = new Timer(500, e -> {
             try {
                 System.out.println("Current Level: " + currentLevel); // Debug print
-                if (currentLevel == 1) {
-                    SwingUtilities.invokeLater(() -> new Level1());
-                    timer.stop();
-                } else if (currentLevel == 2) {
-                    new Level15();
-                    timer.stop();
-                } else if (currentLevel == 3) {
-                    SwingUtilities.invokeLater(() -> new Level2());
-                    timer.stop();
-                } else if (currentLevel == 4) {
-                    SwingUtilities.invokeLater(() -> new Level3());
-                    timer.stop();
-                } else if (currentLevel == 5) {
-                    SwingUtilities.invokeLater(() -> new Level4());
-                    timer.stop();
-                } else {
-                    // Handle invalid level or default case
-                    System.out.println("Invalid level: " + currentLevel);
+                switch (currentLevel) {
+                    case 1 -> {
+                        SwingUtilities.invokeLater(() -> {
+                            System.out.println("Starting Level 1");
+                            new Level1();
+                        });
+                        timer.stop();
+                    }
+                    case 2 -> {
+                        SwingUtilities.invokeLater(() -> {
+                            System.out.println("Starting Level 2");
+                            new Level2();
+                        });
+                        timer.stop();
+                    }
+                    case 3 -> {
+                        SwingUtilities.invokeLater(() -> {
+                            System.out.println("Starting Level 3");
+                            new Level3();
+                        });
+                        timer.stop();
+                    }
+                    case 4 -> {
+                        SwingUtilities.invokeLater(() -> {
+                            System.out.println("Starting Level 4");
+                            new Level4();
+                        });
+                        timer.stop();
+                    }
+                    case 5 -> {
+                        SwingUtilities.invokeLater(() -> {
+                            System.out.println("Starting Level 5");
+                            new Level5();
+                        });
+                        timer.stop();
+                    }
+                    default -> {
+                        System.out.println("Invalid level: " + currentLevel);
+                        timer.stop();
+                    }
                 }
             } catch (Exception er) {
                 System.err.println("Error: " + er.getMessage());
@@ -49,11 +66,18 @@ public class PreCalcPanic {
         timer.start();
     }
 
-    public static void increment(){
+    public static void increment() {
+        System.out.println("Incrementing level from " + currentLevel + " to " + (currentLevel + 1));
         currentLevel++;
     }
-    public static void timerchange(){
-        timer.start();
-        System.out.println("AHHGUHAGUHU");
+
+    public static void timerChange() {
+        if (timer != null) {
+            System.out.println("Restarting timer");
+            timer.start();
+        } else {
+            System.out.println("Timer is null, initializing and starting");
+            startPolling();
+        }
     }
 }
