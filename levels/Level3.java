@@ -69,6 +69,8 @@ public class Level3 extends JFrame implements ActionListener {
                         bg.revalidate();
                         bg.repaint();
                         launchTimingGame();
+                        break;
+                    case 6: 
                         PreCalcPanic.increment();
                         PreCalcPanic.timerChange();
                         SaveThat.saveLevel(4);
