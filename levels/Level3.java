@@ -63,6 +63,7 @@ public class Level3 extends JFrame implements ActionListener {
                         launchTimingGame();
                         PreCalcPanic.increment();
                         SaveThat.saveLevel(4);
+                        scene.dispose(); 
                         break; 
                     default:
                         if (currentIndex < reader.lines.size()) {
