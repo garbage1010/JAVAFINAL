@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 
 public class PreCalcPanic {
     public static int currentLevel = 0;
+    public static Timer timer;
 
     public static void main(String[] args) {
         startPolling();
@@ -19,19 +20,23 @@ public class PreCalcPanic {
     }
 
     private static void startPolling() {
-        Timer timer = new Timer(500, e -> {
+        timer = new Timer(500, e -> {
             try {
                 System.out.println("Current Level: " + currentLevel); // Debug print
                 if (currentLevel == 1) {
                     SwingUtilities.invokeLater(() -> new Level1());
+                    timer.stop();
                 } else if (currentLevel == 2) {
                     new Level15();
                 } else if (currentLevel == 3) {
                     SwingUtilities.invokeLater(() -> new Level2());
+                    timer.stop();
                 } else if (currentLevel == 4) {
                     SwingUtilities.invokeLater(() -> new Level3());
+                    timer.stop();
                 } else if (currentLevel == 5) {
                     SwingUtilities.invokeLater(() -> new Level4());
+                    timer.stop();
                 } else {
                     // Handle invalid level or default case
                     System.out.println("Invalid level: " + currentLevel);
