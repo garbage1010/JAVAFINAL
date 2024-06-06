@@ -1,22 +1,12 @@
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 import java.awt.event.ActionEvent;
-import javax.swing.SwingUtilities;
+import java.awt.event.ActionListener;
 
 public class Level2 extends JFrame implements ActionListener {
     int framecounter = 1; // What frame are we on
     String key = "1011110110111101100000011111110111111101"; // Key for validation
-
     Timer timer;
-
     TextFileReader reader = new TextFileReader("levels\\images\\texts\\lv2dialogue.txt", 0, 600, 800, 200);
     
     // Background images
@@ -27,12 +17,9 @@ public class Level2 extends JFrame implements ActionListener {
     Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\2\\Frame5-2.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
-    //new FadeOutOverlay(bg); // Add a fade-in 
     JButton cipher; // Cipher on the first frame in the shelf
     JFrame scene = new JFrame(); // Main frame
-
     private int clicks = 0; // Declare clicks as a class variable to be accessible throughout the class
-    //private Player player; // Player for the background music
 
     public Level2() {
         // Set background to frame size and set original icon
@@ -54,14 +41,9 @@ public class Level2 extends JFrame implements ActionListener {
         scene.add(reader.getButton());
         scene.add(bg);
         scene.add(cipher);
-        // Start the background music
-           
-        playBackgroundMusic("levels\\images\\audio\\lvl2ambience.mp3");
 
         startPolling();
     }
-
-
 
     // Start polling to handle frame changes
     private void startPolling() {
@@ -138,38 +120,38 @@ public class Level2 extends JFrame implements ActionListener {
 
     // Start the button mashing minigame
     private void startMinigame(){
+        // Stop any existing timers
+        timer.stop();
+        reader.setProgress(false);
+
+        // Create the minigame panel
+        ButtonMashingMinigame minigame = new ButtonMashingMinigame();
+        minigame.setBounds(0, 0, 800, 600);
+
+        // Add the minigame panel to the scene
+        scene.setContentPane(minigame);
+        scene.revalidate();
+        scene.repaint();
+        minigame.startGame();
+
         // Create a timer to limit the time for the mini-game
         Timer bounds = new Timer(5000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Mini-game time is up, handle the click count
-                System.out.println("Number of clicks: " + clicks);
-                clicks = 0; // Reset clicks for a new game
+                System.out.println("Number of clicks: " + minigame.getMashCount());
+                minigame.endGame(); // End the minigame
                 endMinigame(); // Proceed after minigame ends
             }
         });
+        bounds.setRepeats(false);
         bounds.start(); // Start the timer
-
-        // Stop any existing timers
-        timer.stop();
-        reader.setProgress(false);
-
-        // Create the button for the minigame
-        JButton masher = new JButton("Break the window!");
-        masher.setBounds(0, 0, 100, 100);
-        masher.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                clicks++; // Increment the click count
-            }
-        });
-        bg.add(masher); // Add the button to the background
     }
 
     // End the minigame and proceed to the next step
     private void endMinigame() {
-        bg.removeAll(); // Remove all components from bg
         bg.setIcon(new ImageIcon(frame5)); // Set the final frame after minigame
+        scene.setContentPane(bg);
         scene.add(reader.getButton());
         scene.repaint();
         reader.setProgress(true);
@@ -181,33 +163,8 @@ public class Level2 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
     }
-    public static void playBackgroundMusic(String filePath) {
-        try {//open try
-            // Open an audio input stream
-            File musicFile = new File(filePath);
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
 
-            // Get a sound clip resource
-            Clip clip = AudioSystem.getClip();
-
-            // Open audio clip and load samples from the audio input stream
-            clip.open(audioStream);
-
-            // Start the clip in a loop
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-
-            // Start playing the music
-            clip.start();
-
-        }//close try 
-        catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public static void main(String[] args) {//open main
-        //SwingUtilities.invokeLater(() -> 
+    public static void main(String[] args) {
         new Level2();
-    }//close main
+    }
 }
