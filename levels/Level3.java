@@ -20,7 +20,7 @@ public class Level3 extends JFrame implements ActionListener {
     Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\3\\Frame7-3.PNG");
 
     JLabel bg = new JLabel(); // Label to be used as background
-    //new FadeOutOverlay(bg); // Add a fade-in 
+    // new FadeOutOverlay(bg); // Add a fade-in 
 
     // Constructor
     public Level3() {
@@ -51,21 +51,29 @@ public class Level3 extends JFrame implements ActionListener {
                 switch (currentIndex) {
                     case 2:
                         bg.setIcon(new ImageIcon(frame2));
+                        bg.revalidate();
+                        bg.repaint();
                         break;
                     case 3:
                         bg.setIcon(new ImageIcon(frame3));
+                        bg.revalidate();
+                        bg.repaint();
                         break;
                     case 4:
                         bg.setIcon(new ImageIcon(frame4));
+                        bg.revalidate();
+                        bg.repaint();
                         break;
                     case 5:
                         bg.setIcon(new ImageIcon(frame5));
+                        bg.revalidate();
+                        bg.repaint();
                         launchTimingGame();
                         PreCalcPanic.increment();
                         PreCalcPanic.timerChange();
                         SaveThat.saveLevel(4);
-                        dispose(); 
-                        break; 
+                        dispose();
+                        break;
                     default:
                         if (currentIndex < reader.lines.size()) {
                             reader.updateLabel(); // Ensure label updates even in default case
@@ -96,7 +104,15 @@ public class Level3 extends JFrame implements ActionListener {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new Level3());
+        // Add a small delay before creating the frame to ensure images are loaded
+        SwingUtilities.invokeLater(() -> {
+            try {
+                Thread.sleep(500); // Delay for half a second
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            new Level3();
+        });
     }
 }
 
