@@ -24,7 +24,7 @@ public class ButtonMashingMinigame extends JPanel implements KeyListener, Action
         mashCount = 0;
         timeLeft = GAME_DURATION;
 
-        label = new JLabel("Mash the Enter key!");
+        label = new JLabel("SMASH ENTER!");
         label.setForeground(Color.WHITE);
         label.setFont(new Font("Agency FB", Font.PLAIN, 24));
         label.setBounds(100, 100, 600, 50);
@@ -44,7 +44,7 @@ public class ButtonMashingMinigame extends JPanel implements KeyListener, Action
     public void endGame() {
         isRunning = false;
         timer.stop();
-        label.setText("Game Over! You mashed the button " + mashCount + " times.");
+        label.dispose(); 
     }
 
     @Override
@@ -53,7 +53,7 @@ public class ButtonMashingMinigame extends JPanel implements KeyListener, Action
         if (timeLeft <= 0) {
             endGame();
         } else {
-            label.setText("Time left: " + timeLeft + " seconds. Mash count: " + mashCount);
+            System.out.println("Time left: " + timeLeft + " seconds. Mash count: " + mashCount);
         }
     }
 
