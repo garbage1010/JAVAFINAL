@@ -145,7 +145,7 @@ public class Level2 extends JFrame implements ActionListener {
                         bg.setIcon(new ImageIcon(frame5)); // Final frame after minigame
                         PreCalcPanic.increment();
                         SaveThat.saveLevel(3);
-                        return; 
+                        break; 
                     default:
                         break;
                 }
