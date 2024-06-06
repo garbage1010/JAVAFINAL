@@ -130,12 +130,12 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
                     bg.setIcon(new ImageIcon(blondegone));
                     allowprogress = true;
                 }
-                if (currentIndex == 4 && Math.abs(spriteX - 300) <= 50 && Math.abs(spriteY - 300) <= 50) {
+                if (currentIndex == 4 && Math.abs(spriteX - 214) <= 75 && Math.abs(spriteY - 12) <= 50) {
                     allowprogress = false;
                     movementAllowed = false;
-                    remove(advanceButton); // Remove the advance button from the frame
-                    System.out.println("Final position reached, movement stopped."); // Debug print
-                    updateLabel();
+                    PreCalcPanic.increment();
+                    SaveThat.saveLevel(2);
+                    System.exit(0);
                 }
             } catch (Exception ge) {
                 System.out.println("Error: " + ge);
