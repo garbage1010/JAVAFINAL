@@ -61,11 +61,9 @@ public class Level3 extends JFrame implements ActionListener {
                     case 5:
                         bg.setIcon(new ImageIcon(frame5));
                         launchTimingGame();
-                        break;
-                    case 6: 
-                         PreCalcPanic.increment();
-                         SaveThat.saveLevel(4);
-                         System.exit(0);
+                        PreCalcPanic.increment();
+                        SaveThat.saveLevel(4);
+                        System.exit(0);
                     default:
                         if (currentIndex < reader.lines.size()) {
                             reader.updateLabel(); // Ensure label updates even in default case
