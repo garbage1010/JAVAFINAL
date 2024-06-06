@@ -8,13 +8,10 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
-<<<<<<< Updated upstream
 import javax.sound.sampled.*;
-=======
 import java.io.FileInputStream;
 import java.io.IOException;
 
->>>>>>> Stashed changes
 
 public class Level4 extends JFrame implements ActionListener {
 
@@ -32,16 +29,10 @@ public class Level4 extends JFrame implements ActionListener {
     Image frame7 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Goodgoodend.PNG"); 
 
     JLabel bg = new JLabel(); // Label to be used as background
-    new FadeOutOverlay(bg); 
-<<<<<<< Updated upstream
+    //new FadeOutOverlay(bg); 
     JButton selectSyringe;
     JButton errorbutton = new JButton(); // Assuming this button is needed
     String filePath = "levels\\images\\texts\\lvl4ambience.wav";
-=======
-    String filePath = "lvl4ambience.wav";
-
-   
->>>>>>> Stashed changes
 
     // Constructor
     public Level4() {
@@ -61,17 +52,11 @@ public class Level4 extends JFrame implements ActionListener {
         add(reader.getButton());
 
         // Start the background music
-<<<<<<< Updated upstream
         playBackgroundMusic(filePath);
-=======
-        // Start the background music
-        new playBackgroundMusic(filePath);
->>>>>>> Stashed changes
 
         // Start the timer
         startPolling();
     }
-<<<<<<< Updated upstream
 
     public static void playBackgroundMusic(String filePath) {
         try {
@@ -95,8 +80,6 @@ public class Level4 extends JFrame implements ActionListener {
             e.printStackTrace();
         }
     }
-=======
->>>>>>> Stashed changes
 
     private void startPolling() {
         timer = new Timer(500, e -> {
@@ -128,7 +111,7 @@ public class Level4 extends JFrame implements ActionListener {
                         bg.setIcon(new ImageIcon(frame7)); 
                         PreCalcPanic.increment();
                         SaveThat.saveLevel(5);
-                        scene.dispose(); 
+                        dispose(); 
                         break; 
                     default:
                         if (currentIndex < reader.lines.size()) {
