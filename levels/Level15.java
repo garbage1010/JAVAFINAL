@@ -135,7 +135,7 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
                     movementAllowed = false;
                     PreCalcPanic.increment();
                     SaveThat.saveLevel(2);
-                    PreCalcPanic.timerchange();
+                    PreCalcPanic.timerChange();
                     System.exit(0);
                 }
             } catch (Exception ge) {

@@ -12,52 +12,62 @@ import java.awt.event.ActionEvent;
 
 public class PreCalcPanic {
     private static Timer timer;
-    private static int currentLevel = 1;
+    public static int currentLevel = 0;
+    public static void main(String[] args) {
+        startPolling();
+        new StartMenu(); // Create an instance of StartMenu
+    }
+
 
     public static void startPolling() {
         timer = new Timer(500, e -> {
             try {
                 System.out.println("Current Level: " + currentLevel); // Debug print
                 switch (currentLevel) {
-                    case 1 -> {
+                    case 1:// -> {
                         SwingUtilities.invokeLater(() -> {
                             System.out.println("Starting Level 1");
                             new Level1();
                         });
                         timer.stop();
-                    }
-                    case 2 -> {
+                        break;
+                    //}
+                    case 2:// -> {
+                        SwingUtilities.invokeLater(() -> {
+                            System.out.println("Starting Level 1.5");
+                            new Level15();
+                        });
+                        timer.stop();
+                        break;
+                    //}
+                    case 3:
                         SwingUtilities.invokeLater(() -> {
                             System.out.println("Starting Level 2");
                             new Level2();
                         });
                         timer.stop();
-                    }
-                    case 3 -> {
+                        break;
+                    //}
+                    case 4:// -> {
                         SwingUtilities.invokeLater(() -> {
                             System.out.println("Starting Level 3");
                             new Level3();
                         });
                         timer.stop();
-                    }
-                    case 4 -> {
+                    //}
+                    case 5:// -> {
                         SwingUtilities.invokeLater(() -> {
                             System.out.println("Starting Level 4");
                             new Level4();
                         });
                         timer.stop();
-                    }
-                    case 5 -> {
-                        SwingUtilities.invokeLater(() -> {
-                            System.out.println("Starting Level 5");
-                            new Level5();
-                        });
-                        timer.stop();
-                    }
-                    default -> {
+                        break;
+                    //}
+                    default:// -> {
                         System.out.println("Invalid level: " + currentLevel);
                         timer.stop();
-                    }
+                        break;
+                    //}
                 }
             } catch (Exception er) {
                 System.err.println("Error: " + er.getMessage());

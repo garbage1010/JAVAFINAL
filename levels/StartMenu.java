@@ -15,6 +15,8 @@ public class StartMenu extends JFrame implements ActionListener {
     float opacity = 1.0f; // Initial opacity
 
     public StartMenu() {
+
+        JFrame menu = new JFrame();
         
         // Start Game Button
         start = new JButton(); // Initializing start button
@@ -24,7 +26,8 @@ public class StartMenu extends JFrame implements ActionListener {
         start.addActionListener(e -> {
             PreCalcPanic.increment();
             SaveThat.saveLevel(0);
-            System.exit(0);
+            PreCalcPanic.timerChange();
+            menu.dispose();
         }); // Adding action listener to print a message when clicked
 
         // Load Game Button
@@ -38,7 +41,7 @@ public class StartMenu extends JFrame implements ActionListener {
         }); 
     
         // Create Frame
-        JFrame menu = new JFrame(); // Initializing frame
+         // Initializing frame
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Setting default close operation
         menu.setLayout(null); // Setting layout to null
         menu.setSize(800, 600); // Setting size
