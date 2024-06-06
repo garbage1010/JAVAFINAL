@@ -89,6 +89,7 @@ public class Level2 extends JFrame implements ActionListener {
                         bg.setIcon(new ImageIcon(frame4)); // Update background image
                         JButton window = new JButton();
                         window.setBounds(0, 0, 200, 200);
+                        window.setVisible(false);
                         window.addActionListener(o -> {
                             reader.setProgress(true);
                             reader.currentIndex++;

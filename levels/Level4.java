@@ -46,7 +46,7 @@ public class Level4 extends JFrame implements ActionListener {
         add(reader.getButton());
 
         // Start the background music
-        playBackgroundMusic(filePath);
+        //playBackgroundMusic(filePath);
 
         // Start the timer
         startPolling();
@@ -102,6 +102,7 @@ public class Level4 extends JFrame implements ActionListener {
 
     private void updateFrame(TextFileReader reader, ImageIcon frame, int x, int y, int width, int height, int nextIndex) {
         reader.currentIndex = nextIndex;
+        JButton errorbutton = new JButton();
         bg.setIcon(frame);
         errorbutton.setBounds(x, y, width, height);
         add(errorbutton);

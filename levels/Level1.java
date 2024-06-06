@@ -118,6 +118,7 @@ public class Level1 extends JFrame implements ActionListener {
         bg.setIcon(new ImageIcon(frame));
         add(errorbutton);
         errorbutton.setBounds(x, y, width, height);
+        errorbutton.setVisible(false);
         removeAllActionListeners(errorbutton);
         errorbutton.addActionListener(l -> {
             System.out.println("Error button pressed for next index: " + nextIndex); // Debug print
