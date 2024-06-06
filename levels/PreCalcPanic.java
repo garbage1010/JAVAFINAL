@@ -28,6 +28,7 @@ public class PreCalcPanic {
                     timer.stop();
                 } else if (currentLevel == 2) {
                     new Level15();
+                    timer.stop();
                 } else if (currentLevel == 3) {
                     SwingUtilities.invokeLater(() -> new Level2());
                     timer.stop();
@@ -50,5 +51,9 @@ public class PreCalcPanic {
 
     public static void increment(){
         currentLevel++;
+    }
+    public static void timerchange(){
+        timer.start();
+        System.out.println("AHHGUHAGUHU");
     }
 }

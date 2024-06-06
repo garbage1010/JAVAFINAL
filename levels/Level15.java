@@ -114,7 +114,7 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
     private void posCheck() {
         posTimer = new Timer(250, e -> {
             try {
-                System.out.println("Sprite Position: " + spriteX + ", " + spriteY); // Debug print
+                //System.out.println("Sprite Position: " + spriteX + ", " + spriteY); // Debug print
                 if (currentIndex == 0 && Math.abs(spriteX - 250) <= 50 && Math.abs(spriteY - 400) <= 50) {
                     movementAllowed = false;
                     allowprogress = true;
@@ -135,6 +135,7 @@ public class Level15 extends JFrame implements ActionListener, KeyListener {
                     movementAllowed = false;
                     PreCalcPanic.increment();
                     SaveThat.saveLevel(2);
+                    PreCalcPanic.timerchange();
                     System.exit(0);
                 }
             } catch (Exception ge) {
