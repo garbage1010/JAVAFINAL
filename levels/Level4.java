@@ -29,6 +29,7 @@ public class Level4 extends JFrame implements ActionListener {
     Image frame4 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final4.PNG");
     Image frame5 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final5.PNG");
     Image frame6 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Final6.PNG");
+    Image frame7 = Toolkit.getDefaultToolkit().getImage("levels\\images\\4\\Goodgoodend.PNG"); 
 
     JLabel bg = new JLabel(); // Label to be used as background
     new FadeOutOverlay(bg); 
@@ -120,6 +121,14 @@ public class Level4 extends JFrame implements ActionListener {
                         selectSyringe.setOpaque(false);
                         add(selectSyringe);
                         break;
+                    case 6: 
+                        bg.setIcon(new ImageIcon(frame6)); 
+                        break; 
+                    case 7: 
+                        bg.setIcon(new ImageIcon(frame7)); 
+                        PreCalcPanic.increment();
+                        SaveThat.saveLevel(5);
+                        System.exit(0);
                     default:
                         if (currentIndex < reader.lines.size()) {
                             reader.updateLabel(); // Ensure label updates even in default case
