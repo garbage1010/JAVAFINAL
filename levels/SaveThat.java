@@ -9,7 +9,7 @@ public class SaveThat {
             out.println(currentLevel);
             System.out.println("level saved successfully."); 
         } catch (IOException e) {
-            System.out.println(null, "Error saving level: " + e.getMessage());
+            System.out.println("Error saving level: " + e.getMessage());
         }
     }
 }

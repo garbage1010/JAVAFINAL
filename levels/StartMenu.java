@@ -21,18 +21,20 @@ public class StartMenu extends JFrame implements ActionListener {
         start.setBounds(150, 250, 500, 50); // Setting position and size
         start.setText("Start Game"); // Setting text
         start.setFocusable(false); // Making it non-focusable
-        start.addActionListener(e -> System.out.println("START GAME!!")); // Adding action listener to print a message when clicked
+        start.addActionListener(e -> {
+            PreCalcPanic.increment();
+            SaveThat.saveLevel(0);
+            System.exit(0);
+        }); // Adding action listener to print a message when clicked
 
         // Load Game Button
         load = new JButton(); // Initializing load button
         load.setBounds(150, 325, 500, 50); // Setting position and size
         load.setText("Load Game"); // Setting text
         load.setFocusable(false); // Making it non-focusable
-        load.addActionListener(new ActionListener(){ 
-        public void actionPerformed(ActionEvent e) {
-            currentLevel = LoadThat.loadLevel();
+        load.addActionListener(r ->{
+            PreCalcPanic.currentLevel = LoadThat.loadLevel();
             System.out.println("Game loaded."); 
-         }
         }); 
     
         // Create Frame
@@ -46,6 +48,7 @@ public class StartMenu extends JFrame implements ActionListener {
         menu.getContentPane().setBackground(new Color(220, 220, 255)); // Setting background color
         menu.add(start); // Adding start button to the frame
         menu.add(load); // Adding load button to the frame
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
