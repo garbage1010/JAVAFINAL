@@ -128,6 +128,7 @@ public class Level4 extends JFrame implements ActionListener {
                         bg.setIcon(new ImageIcon(frame7)); 
                         PreCalcPanic.increment();
                         SaveThat.saveLevel(5);
+                        scene.dispose(); 
                         break; 
                     default:
                         if (currentIndex < reader.lines.size()) {
